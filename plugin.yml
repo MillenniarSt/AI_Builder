@@ -1,0 +1,8 @@
+name: AI_Builder
+main: Main.Main
+version: 1.0
+author: Millenniar_Studios
+description: To generate big and fantastic building with AI Builder
+commands:
+  AIbuild:
+    description: Build a house with AI_Builder
