@@ -3,10 +3,23 @@ package Model;
 import java.io.File;
 import java.util.List;
 
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import Main.CustomStyle;
+import Main.Main;
+
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
 
 public class FloorStyle extends CustomStyle {
 
@@ -43,17 +56,26 @@ public class FloorStyle extends CustomStyle {
 		
 		String cornerPath = file.getString("corner", null);
 		if(cornerPath != null)
-			this.corner.load("floors\\" + cornerPath);
+			if(!this.corner.load("floors\\" + cornerPath)) {
+				Main.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load floor corner model " + cornerPath);
+				return false;
+			}
 		else
 			this.corner = null;
 		String sidePath = file.getString("side", null);
 		if(sidePath != null)
-			this.side.load("floors\\" + sidePath);
+			if(!this.side.load("floors\\" + sidePath)) {
+				Main.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load floor side model " + sidePath);
+				return false;
+			}
 		else
 			this.side = null;
 		String repeatPath = file.getString("repeat", null);
 		if(repeatPath != null)
-			this.repeat.load("floors\\" + repeatPath);
+			if(!this.repeat.load("floors\\" + repeatPath)) {
+				Main.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load floor repeat model " + repeatPath);
+				return false;
+			}
 		else
 			return false;
 		List<String> centers = file.getStringList("center");
@@ -63,7 +85,10 @@ public class FloorStyle extends CustomStyle {
 					String centerPath = centers.get(i);
 					if(centerPath != null) {
 						center[i] = new Model();
-						center[i].load("floors\\" + centerPath);
+						if(!center[i].load("floors\\" + centerPath)) {
+							Main.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load floor center model " + centerPath + " id:" + i);
+							return false;
+						}
 					} else {
 						return false;
 					}

@@ -1,7 +1,7 @@
 package Model;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Set;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -9,6 +9,17 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import Main.Loader;
 import Main.RandomCollection;
+
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
 
 public class WallCorner implements Loader {
 
@@ -32,12 +43,12 @@ public class WallCorner implements Loader {
 		String material = file.getString("materials.material", null);
 		String type = file.getString("materials.type", null);
 		String group = file.getString("materials.group", "default");
-		ArrayList<String> properties = new ArrayList<>();
+		HashMap<String, String> properties = new HashMap<>();
 		Set<String> propertiesConf = file.getConfigurationSection("materials.properties").getKeys(false);
 		if(propertiesConf != null) {
 			if(!propertiesConf.isEmpty()) {
 				for(String property : propertiesConf) {
-					properties.add(property + "=" + file.getString("materials.properties." + property));
+					properties.put(property, file.getString("materials.properties." + property));
 				}
 			}
 		}

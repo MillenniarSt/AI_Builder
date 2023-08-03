@@ -2,10 +2,23 @@ package Model;
 
 import java.io.File;
 
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import Main.CustomStyle;
+import Main.Main;
+
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
 
 public class Door extends CustomStyle {
 
@@ -38,17 +51,14 @@ public class Door extends CustomStyle {
 		setId(path.replaceAll("\\", "."));
 		FileConfiguration file = YamlConfiguration.loadConfiguration(new File(CONFIG + "\\" + path + ".yml"));
 		
-		int distance = file.getInt("distance", 1);
-		if(distance < 1)
-			distance = 1;
-		this.distance = distance;
-		int weigh = file.getInt("weigh", 1);
-		if(weigh < 1)
-			weigh = 1;
-		this.weigh = weigh;
+		distance = getInt(file, "distance", 1);
+		weigh = getInt(file, "weigh", 1);
 		String modelPath = file.getString("model", null);
 		if(modelPath != null) {
-			this.model.load("doors\\" + modelPath);
+			if(!this.model.load("doors\\" + modelPath)) {
+				Main.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load door model " + modelPath);
+				return false;
+			}
 			return true;
 		} else {
 			return false;

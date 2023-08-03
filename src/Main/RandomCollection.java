@@ -5,6 +5,17 @@ import java.util.HashMap;
 
 import Exception.AIObjectNotFoundException;
 
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
+
 public class RandomCollection<Obj> {
 
 	private ArrayList<Random<Obj>> collection;

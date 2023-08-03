@@ -1,6 +1,15 @@
 package Exception;
 
-import Main.Main;
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
 
 public class WallNotFoundException extends AIObjectNotFoundException {
 	private static final long serialVersionUID = 1L;
@@ -11,7 +20,6 @@ public class WallNotFoundException extends AIObjectNotFoundException {
 	
 	public WallNotFoundException(int floor, int high, boolean inside) {
 		super("WallStyle", "Not Found a wall style from BuildingPalace.wallHeight for the floor " + floor + " with high " + high + ", inside = " + inside);
-		Main.printDebug("Not Found a wall style from BuildingPalace.wallHeight for the floor " + floor + " with high " + high + ", inside = " + inside);
 	}
 
 	public int getFloor() {

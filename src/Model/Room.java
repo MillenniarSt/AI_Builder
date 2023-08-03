@@ -11,6 +11,17 @@ import Map.MapPosition;
 import Map.MapPositionOpt;
 import Map.MapRoom;
 
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
+
 public class Room {
 
 	private MapRoom map;
@@ -20,6 +31,7 @@ public class Room {
 	private ArrayList<Wall> walls;
 	private Floor floor;
 	private Floor ceiling;
+	private Roof roof;
 	
 	public Room(MapRoom map, int base, int high) {
 		this.map = map;
@@ -67,9 +79,9 @@ public class Room {
 		MapPosition checkWall;
 		
 		Main.printDebug("Generating north walls");
-		x = map.getNorthWest().getPos().getPosX() - building.getWallsize();
+		x = map.getNorthWest().getPos().getPosX() - building.getStyleBuild().getWallsize();
 		z = map.getNorthWest().getPos().getPosZ() + 1;
-		posOut = floor.getPos(x, z + building.getWallsize());
+		posOut = floor.getPos(x, z + building.getStyleBuild().getWallsize());
 		posWall = floor.getPos(x, z);
 		if(posOut == null) {
 			inside = false;
@@ -78,8 +90,8 @@ public class Room {
 		}
 		door = posWall.getFilled() == MapPositionOpt.DOOR;
 		skip = posWall.isUsed();
-		for(int i = map.getNorthWest().getPos().getPosX() - building.getWallsize(); i <= map.getNorthEast().getPos().getPosX(); i++) {
-			checkOut = floor.getPos(i, z + building.getWallsize());
+		for(int i = map.getNorthWest().getPos().getPosX() - building.getStyleBuild().getWallsize(); i <= map.getNorthEast().getPos().getPosX(); i++) {
+			checkOut = floor.getPos(i, z + building.getStyleBuild().getWallsize());
 			checkWall = floor.getPos(i, z);
 			if(checkOut == null) {
 				checkInside = false;
@@ -90,7 +102,7 @@ public class Room {
 			checkSkip = checkWall.isUsed();
 			if(skip == false) {
 				if(checkSkip == true || (inside != checkInside && checkInside) || door != checkDoor) {
-					Wall wall = new Wall(floor.getWall(inside), new Position(x, z, base), new Position(i - 1, z + building.getWallsize() - 1, base + high), inside, 0);	
+					Wall wall = new Wall(floor.getWall(inside), new Position(x, z, base), new Position(i - 1, z + building.getStyleBuild().getWallsize() - 1, base + high), inside, 0);	
 					if(door != checkDoor) {
 						wall.setDoor(this.getMap().getStyleDoor());
 						wall.getStyle().setCorner(null);
@@ -101,20 +113,20 @@ public class Room {
 					door = checkDoor;
 					skip = checkSkip;
 				} else if(inside != checkInside) {
-					walls.add(new Wall(floor.getWall(inside), new Position(x, z, base), new Position(i, z + building.getWallsize() - 1, base + high), inside, 0));
+					walls.add(new Wall(floor.getWall(inside), new Position(x, z, base), new Position(i, z + building.getStyleBuild().getWallsize() - 1, base + high), inside, 0));
 					x = i + 1;
 					inside = checkInside;
 					door = checkDoor;
 					skip = checkSkip;
 				}
-				floor.getPos(i, z + building.getWallsize() -1).setUsed(true);
+				floor.getPos(i, z + building.getStyleBuild().getWallsize() -1).setUsed(true);
 			}
 		}
 		
 		Main.printDebug("Generating east walls");
 		x = map.getNorthEast().getPos().getPosX() + 1;
-		z = map.getNorthEast().getPos().getPosZ() + building.getWallsize();
-		posOut = floor.getPos(x + building.getWallsize(), z);
+		z = map.getNorthEast().getPos().getPosZ() + building.getStyleBuild().getWallsize();
+		posOut = floor.getPos(x + building.getStyleBuild().getWallsize(), z);
 		posWall = floor.getPos(x, z);
 		if(posOut == null) {
 			inside = false;
@@ -123,8 +135,8 @@ public class Room {
 		}
 		door = posWall.getFilled() == MapPositionOpt.DOOR;
 		skip = posWall.isUsed();
-		for(int i = map.getNorthEast().getPos().getPosZ() + building.getWallsize(); i >= map.getSouthEast().getPos().getPosZ(); i--) {
-			checkOut = floor.getPos(x  + building.getWallsize(), i);
+		for(int i = map.getNorthEast().getPos().getPosZ() + building.getStyleBuild().getWallsize(); i >= map.getSouthEast().getPos().getPosZ(); i--) {
+			checkOut = floor.getPos(x  + building.getStyleBuild().getWallsize(), i);
 			checkWall = floor.getPos(i, z);
 			if(checkOut == null) {
 				checkInside = false;
@@ -135,7 +147,7 @@ public class Room {
 			checkSkip = checkWall.isUsed();
 			if(skip == false) {
 				if(checkSkip == true || (inside != checkInside && checkInside) || door != checkDoor) {
-					Wall wall = new Wall(floor.getWall(inside), new Position(x, z, base), new Position(x + building.getWallsize() - 1, i + 1, base + high), inside, 1);
+					Wall wall = new Wall(floor.getWall(inside), new Position(x, z, base), new Position(x + building.getStyleBuild().getWallsize() - 1, i + 1, base + high), inside, 1);
 					if(door != checkDoor) {
 						wall.setDoor(this.getMap().getStyleDoor());
 						wall.getStyle().setCorner(null);
@@ -146,20 +158,20 @@ public class Room {
 					door = checkDoor;
 					skip = checkSkip;
 				} else if(inside != checkInside) {
-					walls.add(new Wall(floor.getWall(inside), new Position(x, z, base), new Position(x + building.getWallsize() - 1, i, base + high), inside, 1));
+					walls.add(new Wall(floor.getWall(inside), new Position(x, z, base), new Position(x + building.getStyleBuild().getWallsize() - 1, i, base + high), inside, 1));
 					z = i - 1;
 					inside = checkInside;
 					door = checkDoor;
 					skip = checkSkip;
 				}
-				floor.getPos(x + building.getWallsize() -1, i).setUsed(true);
+				floor.getPos(x + building.getStyleBuild().getWallsize() -1, i).setUsed(true);
 			}
 		}
 		
 		Main.printDebug("Generating south walls");
-		x = map.getSouthEast().getPos().getPosX() + building.getWallsize();
+		x = map.getSouthEast().getPos().getPosX() + building.getStyleBuild().getWallsize();
 		z = map.getSouthEast().getPos().getPosZ() - 1;
-		posOut = floor.getPos(x, z - building.getWallsize());
+		posOut = floor.getPos(x, z - building.getStyleBuild().getWallsize());
 		posWall = floor.getPos(x, z);
 		if(posOut == null) {
 			inside = false;
@@ -168,8 +180,8 @@ public class Room {
 		}
 		door = posWall.getFilled() == MapPositionOpt.DOOR;
 		skip = posWall.isUsed();
-		for(int i = map.getSouthEast().getPos().getPosX() + building.getWallsize(); i >= map.getSouthWest().getPos().getPosX(); i--) {
-			checkOut = floor.getPos(i, z - building.getWallsize());
+		for(int i = map.getSouthEast().getPos().getPosX() + building.getStyleBuild().getWallsize(); i >= map.getSouthWest().getPos().getPosX(); i--) {
+			checkOut = floor.getPos(i, z - building.getStyleBuild().getWallsize());
 			checkWall = floor.getPos(i, z);
 			if(checkOut == null) {
 				checkInside = false;
@@ -180,7 +192,7 @@ public class Room {
 			checkSkip = checkWall.isUsed();
 			if(skip == false) {
 				if(checkSkip == true || (inside != checkInside && checkInside) || door != checkDoor) {
-					Wall wall = new Wall(floor.getWall(inside), new Position(x, z, base), new Position(i + 1, z - building.getWallsize() + 1, base + high), inside, 2);
+					Wall wall = new Wall(floor.getWall(inside), new Position(x, z, base), new Position(i + 1, z - building.getStyleBuild().getWallsize() + 1, base + high), inside, 2);
 					if(door != checkDoor) {
 						wall.setDoor(this.getMap().getStyleDoor());
 						wall.getStyle().setCorner(null);
@@ -191,20 +203,20 @@ public class Room {
 					door = checkDoor;
 					skip = checkSkip;
 				} else if(inside != checkInside) {
-					walls.add(new Wall(floor.getWall(inside), new Position(x, z, base), new Position(i, z - building.getWallsize() + 1, base + high), inside, 2));
+					walls.add(new Wall(floor.getWall(inside), new Position(x, z, base), new Position(i, z - building.getStyleBuild().getWallsize() + 1, base + high), inside, 2));
 					x = i - 1;
 					inside = checkInside;
 					door = checkDoor;
 					skip = checkSkip;
 				}
-				floor.getPos(i, z - building.getWallsize() +1).setUsed(true);
+				floor.getPos(i, z - building.getStyleBuild().getWallsize() +1).setUsed(true);
 			}
 		}
 		
 		Main.printDebug("Generating west walls");
 		x = map.getSouthWest().getPos().getPosX() - 1;
-		z = map.getSouthWest().getPos().getPosZ() - building.getWallsize();
-		posOut = floor.getPos(x - building.getWallsize(), z);
+		z = map.getSouthWest().getPos().getPosZ() - building.getStyleBuild().getWallsize();
+		posOut = floor.getPos(x - building.getStyleBuild().getWallsize(), z);
 		posWall = floor.getPos(x, z);
 		if(posOut == null) {
 			inside = false;
@@ -213,8 +225,8 @@ public class Room {
 		}
 		door = posWall.getFilled() == MapPositionOpt.DOOR;
 		skip = posWall.isUsed();
-		for(int i = map.getSouthWest().getPos().getPosZ() - building.getWallsize(); i <= map.getNorthWest().getPos().getPosZ(); i++) {
-			checkOut = floor.getPos(x - building.getWallsize(), i);
+		for(int i = map.getSouthWest().getPos().getPosZ() - building.getStyleBuild().getWallsize(); i <= map.getNorthWest().getPos().getPosZ(); i++) {
+			checkOut = floor.getPos(x - building.getStyleBuild().getWallsize(), i);
 			checkWall = floor.getPos(i, z);
 			if(checkOut == null) {
 				checkInside = false;
@@ -225,7 +237,7 @@ public class Room {
 			checkSkip = checkWall.isUsed();
 			if(skip == false) {
 				if(checkSkip == true || (inside != checkInside && checkInside) || door != checkDoor) {
-					Wall wall = new Wall(floor.getWall(inside), new Position(x, z, base), new Position(x - building.getWallsize() + 1, i - 1, base + high), inside, 3);
+					Wall wall = new Wall(floor.getWall(inside), new Position(x, z, base), new Position(x - building.getStyleBuild().getWallsize() + 1, i - 1, base + high), inside, 3);
 					if(door != checkDoor) {
 						wall.setDoor(this.getMap().getStyleDoor());
 						wall.getStyle().setCorner(null);
@@ -236,13 +248,13 @@ public class Room {
 					door = checkDoor;
 					skip = checkSkip;
 				} else if(inside != checkInside) {
-					walls.add(new Wall(floor.getWall(inside), new Position(x, z, base), new Position(x - building.getWallsize() + 1, i, base + high), inside, 3));
+					walls.add(new Wall(floor.getWall(inside), new Position(x, z, base), new Position(x - building.getStyleBuild().getWallsize() + 1, i, base + high), inside, 3));
 					z = i + 1;
 					inside = checkInside;
 					door = checkDoor;
 					skip = checkSkip;
 				}
-				floor.getPos(x - building.getWallsize() +1, i).setUsed(true);
+				floor.getPos(x - building.getStyleBuild().getWallsize() +1, i).setUsed(true);
 			}
 		}
 		
@@ -282,5 +294,17 @@ public class Room {
 	}
 	public void setCeiling(Floor ceiling) {
 		this.ceiling = ceiling;
+	}
+	public int getBase() {
+		return base;
+	}
+	public void setBase(int base) {
+		this.base = base;
+	}
+	public Roof getRoof() {
+		return roof;
+	}
+	public void setRoof(Roof roof) {
+		this.roof = roof;
 	}
 }

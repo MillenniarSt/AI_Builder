@@ -1,6 +1,15 @@
 package Exception;
 
-import Main.Main;
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
 
 public class RoomNotFoundException extends AIObjectNotFoundException {
 	private static final long serialVersionUID = 1L;
@@ -11,13 +20,10 @@ public class RoomNotFoundException extends AIObjectNotFoundException {
 	
 	public RoomNotFoundException(int floor) {
 		super("Room", "Not found a room from BuildingPalace.rooms (config\\AI_Builder\\rooms) for the floor " + floor);
-		Main.printDebug("RoomNotFoundException: " + "Not found a room from CustomMapRoom.rooms (config\\AI_Builder\\rooms) for the floor " + floor);
 		this.floor = floor;
 	}
 	public RoomNotFoundException(int floor, int lenghtX, int lenghtZ) {
 		super("Room", "Not found a room from BuildingPalace.rooms (config\\AI_Builder\\rooms) for the floor " + floor + 
-				" and size " + lenghtX + " x " + lenghtZ);
-		Main.printDebug("RoomNotFoundException: " + "Not found a room from CustomMapRoom.rooms (config\\AI_Builder\\rooms) for the floor " + floor + 
 				" and size " + lenghtX + " x " + lenghtZ);
 		this.floor = floor;
 		this.lenghtX = lenghtX;

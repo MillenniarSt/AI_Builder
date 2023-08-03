@@ -1,5 +1,16 @@
 package Model;
 
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
+
 public enum BlockType {
 	BLOCK(""), LOG("log"), WOOD("wood"), PLANKS("planks"), STAIRS("stairs"), SLAB("slab"), FENCE("fence"), FENCE_GATE("fence_gate"), SIGN("sign"),
 	WALL("wall"), TRAPDOOR("trapdoor"), DOOR("door"), BUTTON("button"), PRESSURE_PLATE("pressure_plate"), CRACKED("cracked"), MOSSY("mossy");

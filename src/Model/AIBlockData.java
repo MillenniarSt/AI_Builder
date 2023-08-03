@@ -1,10 +1,24 @@
 package Model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.bukkit.Material;
+
+import Exception.AIObjectNotFoundException;
 import Main.RandomCollection;
+import Main.Style;
+
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
 
 public class AIBlockData {
 
@@ -12,37 +26,37 @@ public class AIBlockData {
 	private BlockType type;
 	private String group;
 	
-	private ArrayList<String> properties;
+	private HashMap<String, String> properties;
 	
 	public AIBlockData(String material) {
 		this.material = material;
 		this.type = BlockType.BLOCK;
-		this.properties = new ArrayList<>();
+		this.properties = new HashMap<>();
 	}
 	public AIBlockData(BlockType type, String group) {
 		this.material = null;
 		this.type = type;
 		this.group = group;
-		this.properties = new ArrayList<>();
+		this.properties = new HashMap<>();
 	}
 	public AIBlockData(String material, BlockType type, String group) {
 		this.material = material;
 		this.type = type;
 		this.group = group;
-		this.properties = new ArrayList<>();
+		this.properties = new HashMap<>();
 	}
-	public AIBlockData(String material, ArrayList<String> properties) {
+	public AIBlockData(String material, HashMap<String, String> properties) {
 		this.material = material;
 		this.type = BlockType.BLOCK;
 		this.properties = properties;
 	}
-	public AIBlockData(BlockType type, String group, ArrayList<String> properties) {
+	public AIBlockData(BlockType type, String group, HashMap<String, String> properties) {
 		this.material = null;
 		this.type = type;
 		this.group = group;
 		this.properties = properties;
 	}
-	public AIBlockData(String material, BlockType type, String group, ArrayList<String> properties) {
+	public AIBlockData(String material, BlockType type, String group, HashMap<String, String> properties) {
 		this.material = material;
 		this.type = type;
 		this.group = group;
@@ -85,10 +99,10 @@ public class AIBlockData {
 				for(String property : propertiesGrp.keySet()) {
 					for(int i = 0; i < propertiesGrp.get(property).size(); i++) {
 						if(output.getCollection().get(i) != null) {
-							output.getCollection().get(i).getObject().getProperties().add(property + "=" + propertiesGrp.get(property).get(i));
+							output.getCollection().get(i).getObject().getProperties().put(property, propertiesGrp.get(property).get(i));
 						} else {
 							AIBlockData block = new AIBlockData(materials.get(materials.size() -1), BlockType.getType(types.get(types.size() -1)), groups.get(groups.size() -1));
-							block.getProperties().add(property + "=" + propertiesGrp.get(property).get(i));
+							block.getProperties().put(property, propertiesGrp.get(property).get(i));
 							output.add(block, 1);
 						}
 					}
@@ -96,6 +110,16 @@ public class AIBlockData {
 			}
 		}
 		return output;
+	}
+	
+	public Material getCompleteMaterial(Style style) {
+		try {
+			String materialGroup = style.getGroups().get(group).getCollection().getRandom();
+			return Material.getMaterial(BlockType.change(materialGroup, type));
+		} catch (AIObjectNotFoundException exc) {
+			exc.printStackTrace();
+		}
+		return null;
 	}
 	
 	public String getMaterial() {
@@ -110,10 +134,16 @@ public class AIBlockData {
 	public void setType(BlockType type) {
 		this.type = type;
 	}
-	public ArrayList<String> getProperties() {
+	public HashMap<String, String> getProperties() {
 		return properties;
 	}
-	public void setProperties(ArrayList<String> properties) {
+	public String getProperty(String property) {
+		return properties.get(property);
+	}
+	public void setProperty(String property, String value) {
+		properties.put(property, value);
+	}
+	public void setProperties(HashMap<String, String> properties) {
 		this.properties = properties;
 	}
 	public String getGroup() {

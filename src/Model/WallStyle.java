@@ -3,11 +3,24 @@ package Model;
 import java.io.File;
 import java.util.Set;
 
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import Main.CustomStyle;
+import Main.Main;
 import Main.RandomCollection;
+
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
 
 public class WallStyle extends CustomStyle {
 
@@ -57,26 +70,39 @@ public class WallStyle extends CustomStyle {
 	public boolean load(String path) {
 		setId(path.replaceAll("\\", "."));
 		FileConfiguration file = YamlConfiguration.loadConfiguration(new File(CONFIG + "\\" + path + ".yml"));
+		loadEnableStyle(file);
 		
 		String bottomPath = file.getString("bottom", null);
 		if(bottomPath != null)
-			this.modelBotton.load("walls\\" + bottomPath);
+			if(!this.modelBotton.load("walls\\" + bottomPath)) {
+				Main.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load wall bottom model " + bottomPath);
+				return false;
+			}
 		else
 			this.modelBotton = null;
 		String upPath = file.getString("up", null);
 		if(upPath != null)
-			this.modelUp.load("walls\\" + upPath);
+			if(!this.modelUp.load("walls\\" + upPath)) {
+				Main.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load wall up model " + upPath);
+				return false;
+			}
 		else
 			this.modelUp = null;
 		String repeatPath = file.getString("repeat", null);
 		if(repeatPath != null)
-			this.modelRepeat.load("walls\\" + repeatPath);
+			if(!this.modelRepeat.load("walls\\" + repeatPath)) {
+				Main.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load wall repeat model " + repeatPath);
+				return false;
+			}
 		else
 			return false;
 			
 		String cornerPath = file.getString("corner", null);
 		if(cornerPath != null)
-			this.corner.load("walls\\" + cornerPath);
+			if(!this.corner.load("walls\\" + cornerPath)) {
+				Main.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load wall corner " + cornerPath);
+				return false;
+			}
 		else
 			this.corner = null;
 			
@@ -85,8 +111,11 @@ public class WallStyle extends CustomStyle {
 		if(!windows.isEmpty() && windows != null) {
 			for(String key : windows) {
 				Window wind = new Window(key);
-				wind.load("windows\\" + key);
-				window.add(wind, file.getInt("window." + key));
+				if(!wind.load("windows\\" + key)) {
+					Main.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load window " + key);
+					return false;
+				}
+				window.add(wind, file.getInt("window." + key, 1));
 			}
 		}
 			

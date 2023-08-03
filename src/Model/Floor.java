@@ -3,6 +3,17 @@ package Model;
 import Building.Building;
 import Main.Main;
 
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
+
 public class Floor {
 
 	private FloorStyle style;
@@ -27,6 +38,7 @@ public class Floor {
 	
 	public void build(Building building) {
 		Main.printDebug("Building floor " + this);
+		building.getStyle().changeIndexs();
 		int ix;
 		int iz;
 		int iy;

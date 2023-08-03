@@ -2,6 +2,18 @@ package Map;
 
 import Exception.AIObjectNotFoundException;
 import Model.Door;
+import Model.RoofStyle;
+
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
 
 public class MapRoom {
 
@@ -19,7 +31,8 @@ public class MapRoom {
 	
 	private CustomMapRoom custom;
 	
-	protected MapRoom(MapCorner northWest, MapCorner northEast, MapCorner southWest, MapCorner southEast, CustomMapRoom custom) throws AIObjectNotFoundException {
+	protected MapRoom(MapCorner northWest, MapCorner northEast, MapCorner southWest, MapCorner southEast, 
+			CustomMapRoom custom) throws AIObjectNotFoundException {
 		this.custom = custom;
 		
 		this.northWest = northWest;

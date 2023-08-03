@@ -7,9 +7,21 @@ import Building.BuildingPalace;
 import Exception.AIObjectNotFoundException;
 import Exception.IdNotFoundException;
 import Exception.OverlapMapException;
+import Exception.RoomNotFoundException;
 import Main.Main;
 import Model.Position;
 import Model.WallStyle;
+
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
 
 public class MapFloor {
 
@@ -31,12 +43,12 @@ public class MapFloor {
 	}
 	
 	public void buildFloor(BuildingPalace building) throws OverlapMapException, NumberFormatException, IdNotFoundException, AIObjectNotFoundException {
-		Main.printDebug("Starting to build a basic floor from building " + building.getName());
+		Main.printDebug("Starting to build a basic floor from building " + building.getStyleBuild().getName());
 		if(building.getRooms() >= 1) {
 			System.out.println("Starting to build basic floor " + this.getFloor());
 			
 			Main.printDebug("Starting to build center room");
-			CustomMapRoom custom = building.getRandomRoom(this.getFloor());
+			CustomMapRoom custom = building.getStyleBuild().getRandomRoom(this.getFloor());
 			int sizeXr;
 			int sizeZr;
 			if(((int) (Math.random() * 2)) == 0) {
@@ -49,16 +61,16 @@ public class MapFloor {
 			MapRoom center = new MapRoom(0, 0, sizeXr, sizeZr, custom);
 			Main.printDebug("Generate center room " + center);
 			this.getRooms().add(center);
-			setPosRoom(center, building.getWallsize());
+			setPosRoom(center, building.getStyleBuild().getWallsize());
 			System.out.println("Create center room " + center.getCustom().getId());
 			
 			int count = 1;
 			while(count < building.getRooms()) {
 				Main.printDebug("Starting to build other room");
 				MapRoom room = null;
-				CustomMapRoom newCustom = building.getRandomRoom(this.getFloor());
+				CustomMapRoom newCustom = building.getStyleBuild().getRandomRoom(this.getFloor());
 				
-				MapRoom parent = building.getRandomParentRoom(this.getRooms());
+				MapRoom parent = getRandomParentRoom(this.getRooms());
 				MapCorner anchor = parent.getCorner((int) (Math.random() * 4));
 				Main.printDebug("Select corner parent with id " + anchor.getId());
 				int div = (int) (Math.random() * 2);
@@ -70,36 +82,36 @@ public class MapFloor {
 				int posZ = 0;
 				if(anchor.getId() == 0 && corner == -1) {
 					posX = anchor.getPos().getPosX();
-					posZ = anchor.getPos().getPosZ() + building.getWallsize() + 1;
+					posZ = anchor.getPos().getPosZ() + building.getStyleBuild().getWallsize() + 1;
 					idWall = 0;
 					corner = 3;
 				} else if(anchor.getId() == 0 && corner == 1) {
-					posX = anchor.getPos().getPosX() - building.getWallsize() - 1;
+					posX = anchor.getPos().getPosX() - building.getStyleBuild().getWallsize() - 1;
 					posZ = anchor.getPos().getPosZ();
 					idWall = 3;
 				} else if(anchor.getId() == 1 && corner == 0) {
-					posX = anchor.getPos().getPosX() + building.getWallsize() + 1;
+					posX = anchor.getPos().getPosX() + building.getStyleBuild().getWallsize() + 1;
 					posZ = anchor.getPos().getPosZ();
 					idWall = 1;
 				} else if(anchor.getId() == 1 && corner == 2) {
-					posX = anchor.getPos().getPosX() + building.getWallsize() + 1;
+					posX = anchor.getPos().getPosX() + building.getStyleBuild().getWallsize() + 1;
 					posZ = anchor.getPos().getPosZ();
 					idWall = 0;
 				} else if(anchor.getId() == 2 && corner == 1) {
 					posX = anchor.getPos().getPosX();
-					posZ = anchor.getPos().getPosZ() - building.getWallsize() - 1;
+					posZ = anchor.getPos().getPosZ() - building.getStyleBuild().getWallsize() - 1;
 					idWall = 2;
 				} else if(anchor.getId() == 2 && corner == 3) {
-					posX = anchor.getPos().getPosX() + building.getWallsize() + 1;
+					posX = anchor.getPos().getPosX() + building.getStyleBuild().getWallsize() + 1;
 					posZ = anchor.getPos().getPosZ();
 					idWall = 1;
 				} else if(anchor.getId() == 3 && corner == 2) {
-					posX = anchor.getPos().getPosX() - building.getWallsize() - 1;
+					posX = anchor.getPos().getPosX() - building.getStyleBuild().getWallsize() - 1;
 					posZ = anchor.getPos().getPosZ();
 					idWall = 3;
 				} else if(anchor.getId() == 3 && corner == 4) {
 					posX = anchor.getPos().getPosX();
-					posZ = anchor.getPos().getPosZ() - building.getWallsize() - 1;
+					posZ = anchor.getPos().getPosZ() - building.getStyleBuild().getWallsize() - 1;
 					idWall = 2;
 					corner = 0;
 				}
@@ -117,14 +129,14 @@ public class MapFloor {
 				}
 				
 				try {
-					int[] changeSize = checkRoomSize(posX, posZ, posX + sizeX - 1, posZ - sizeZ + 1, building.getWallAnchor());
+					int[] changeSize = checkRoomSize(posX, posZ, posX + sizeX - 1, posZ - sizeZ + 1, building.getStyleBuild().getWallAnchor());
 					sizeX = sizeX + changeSize[0];
 					sizeZ = sizeZ + changeSize[1];
 					
 					room = new MapRoom(posX, posZ, sizeX, sizeZ, newCustom);
 					Main.printDebug("Generate new room " + room);
 					this.getRooms().add(room);
-					setPosDoor(parent, room, idWall, building.getWallsize());
+					setPosDoor(parent, room, idWall, building.getStyleBuild().getWallsize());
 					parent.setDoor(parent.getDoor() + 1);
 					System.out.println("Create room " + room.getCustom().getId());
 				} catch(OverlapMapException exc) {
@@ -132,7 +144,7 @@ public class MapFloor {
 				}
 				
 				if(room != null) {
-					setPosRoom(room, building.getWallsize());
+					setPosRoom(room, building.getStyleBuild().getWallsize());
 					count++;
 				}
 			}
@@ -144,17 +156,17 @@ public class MapFloor {
 	
 	@SuppressWarnings("unchecked")
 	public void buildFloor(MapFloor parent, MapFloor downstairs, BuildingPalace building) throws AIObjectNotFoundException {
-		Main.printDebug("Starting to build floor from floor parent " + parent.getFloor() + ", downstairs " + downstairs.getFloor() + " building " + building.getName());
+		Main.printDebug("Starting to build floor from floor parent " + parent.getFloor() + ", downstairs " + downstairs.getFloor() + " building " + building.getStyleBuild().getName());
 		System.out.println("Starting to build floor " + this.getFloor() + " from parent floor" + parent.getFloor());
 		
 		this.mapPos = (HashMap<int[], MapPosition>) parent.mapPos.clone();
 		this.rooms = (ArrayList<MapRoom>) parent.rooms.clone();
 		for(MapRoom room : this.rooms) {
-			room.setCustom(building.getRandomRoom(this.getFloor(), room.getLenghtX(), room.getLenghtZ()));
+			room.setCustom(building.getStyleBuild().getRandomRoom(this.getFloor(), room.getLenghtX(), room.getLenghtZ()));
 			System.out.println("Set room " + room.getCustom().getId());
 		}
 		
-		Main.printDebug("Starting to place " + (int) (downstairs.getRooms().size() / building.getStairsWeigh()) + " stairs");
+		Main.printDebug("Starting to place " + (int) (downstairs.getRooms().size() / building.getStyleBuild().getStairsWeigh()) + " stairs");
 		ArrayList<MapRoom> posStairs = new ArrayList<>();
 		for(MapRoom room : downstairs.rooms) {
 			if(room.getCustom().isStairs())
@@ -167,7 +179,7 @@ public class MapFloor {
 				stairs = 1;
 			}
 		if(stairs != 1)
-			stairs = (int) (downstairs.getRooms().size() / building.getStairsWeigh());
+			stairs = (int) (downstairs.getRooms().size() / building.getStyleBuild().getStairsWeigh());
 		Main.printDebug("Definitely number stairs set to " + stairs);
 		if(stairs > posStairs.size())
 			stairs = posStairs.size();
@@ -384,6 +396,30 @@ public class MapFloor {
 		Main.printDebug("Door position set succefly");
 	}
 
+	public static MapRoom getRandomParentRoom(ArrayList<MapRoom> rooms) throws RoomNotFoundException {
+		Main.printDebug("Searching a parent room by array: " + rooms);
+		if(rooms.isEmpty()) {
+			throw new ArrayIndexOutOfBoundsException("The arraylist rooms must not be empity to search a parent");
+		} else {
+			ArrayList<MapRoom> posRoom = new ArrayList<>();
+			for(MapRoom room : rooms) {
+				if(room.getCustom().getPrefDoor() - room.getDoor() > 0) {
+					posRoom.add(room);
+				}
+			}
+			Main.printDebug("Getting a random parent room by array: " + posRoom);
+			if(posRoom.isEmpty()) {
+				MapRoom selcted = rooms.get((int) (Math.random() * rooms.size()));
+				Main.printDebug("Return " + selcted + " parent room");
+				return selcted;
+			} else {
+				MapRoom selcted = posRoom.get((int) (Math.random() * posRoom.size()));
+				Main.printDebug("Return " + selcted + " parent room");
+				return selcted;
+			}
+		}
+	}
+	
 	public ArrayList<MapRoom> getRooms() {
 		return rooms;
 	}

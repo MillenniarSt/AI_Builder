@@ -1,4 +1,4 @@
-package Exception;
+package Model;
 
 /*
 *           |\       /|                          __                 __    ___  __
@@ -11,23 +11,42 @@ package Exception;
 *           |         | ______/
 */
 
-public class AIObjectNotFoundException extends Exception {
-	private static final long serialVersionUID = 1L;
+public class Roof {
 
-	private String type;
+	private final String type;
+	private RoofStyle style;
 	
-	public AIObjectNotFoundException(String message) {
-		super("Object not found: " + message);
-	}
-	public AIObjectNotFoundException(String type, String message) {
-		super(type + " not found: " + message);
+	private Position origin;
+	private Position end;
+	
+	public Roof(String type, RoofStyle style) {
 		this.type = type;
+		this.style = style;
 	}
 
+	public void build() {
+		
+	}
+	
 	public String getType() {
 		return type;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setStyle(RoofStyle style) {
+		this.style = style;
+	}
+	public RoofStyle getStyle() {
+		return style;
+	}
+	public void setOrigin(Position origin) {
+		this.origin = origin;
+	}
+	public Position getOrigin() {
+		return origin;
+	}
+	public void setEnd(Position end) {
+		this.end = end;
+	}
+	public Position getEnd() {
+		return end;
 	}
 }

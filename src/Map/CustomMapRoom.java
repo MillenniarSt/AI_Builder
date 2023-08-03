@@ -3,6 +3,7 @@ package Map;
 import java.io.File;
 import java.util.Set;
 
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -14,6 +15,18 @@ import Main.Random;
 import Main.RandomCollection;
 import Model.Door;
 import Model.FloorStyle;
+import Model.RoofStyle;
+
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
 
 public class CustomMapRoom extends CustomStyle {
 	
@@ -29,11 +42,16 @@ public class CustomMapRoom extends CustomStyle {
 	private int prefDoor;
 	private RandomCollection<Door> door;
 	private RandomCollection<FloorStyle> flooring;
+	private RandomCollection<RoofStyle> roofs;
+	private String roofType;
 	
 	private boolean stairs;
 	
+	public CustomMapRoom(String id) {
+		super(id);
+	}
 	public CustomMapRoom(int minX, int maxX, int minZ, int maxZ, int minFloor, int maxFloor, int floor, int prefDoor,
-			RandomCollection<Door> door, RandomCollection<FloorStyle> flooring, boolean stairs, String id) {
+			RandomCollection<Door> door, RandomCollection<FloorStyle> flooring, String roofType, boolean stairs, RandomCollection<RoofStyle> roofs, String id) {
 		super(id);
 		this.minX = minX;
 		this.maxX = maxX;
@@ -45,6 +63,8 @@ public class CustomMapRoom extends CustomStyle {
 		this.prefDoor = prefDoor;
 		this.door = door;
 		this.flooring = flooring;
+		this.roofs = roofs;
+		this.roofType = roofType;
 		this.stairs = stairs;
 	}
 	
@@ -70,29 +90,15 @@ public class CustomMapRoom extends CustomStyle {
 	public boolean load(String path) {
 		setId(path.replaceAll("\\", "."));
 		FileConfiguration file = YamlConfiguration.loadConfiguration(new File(CONFIG + "\\" + path + ".yml"));
+		loadEnableStyle(file);
 		
 		minFloor = file.getInt("preferencies.minFloor", Integer.MIN_VALUE);
 		maxFloor = file.getInt("preferencies.maxFloor", Integer.MAX_VALUE);
-		int minX = file.getInt("preferencies.minX", 1);
-		if(minX < 1)
-			minX = 1;
-		this.minX = minX;
-		int maxX = file.getInt("preferencies.maxX", 8);
-		if(maxX < 1)
-			maxX = 8;
-		this.maxX = maxX;
-		int minZ = file.getInt("preferencies.minZ", 1);
-		if(minZ < 1)
-			minZ = 1;
-		this.minZ = minZ;
-		int maxZ = file.getInt("preferencies.maxZ", 8);
-		if(maxZ < 1)
-			maxZ = 8;
-		this.maxZ = maxZ;
-		int prefDoor = file.getInt("preferencies.prefDoor", 1);
-		if(prefDoor < 1)
-			prefDoor = 1;
-		this.prefDoor = prefDoor;
+		minX = getInt(file, "preferencies.minX", 1, 4);
+		maxX = getInt(file, "preferencies.maxX", 1, 8);
+		minZ = getInt(file, "preferencies.minZ", 1, 4);
+		maxZ = getInt(file, "preferencies.maxZ", 1, 8);
+		prefDoor = getInt(file, "preferencies.prefDoor", 1);
 		
 		door.getCollection().clear();
 		Set<String> doors = file.getConfigurationSection("door").getKeys(false);
@@ -100,7 +106,10 @@ public class CustomMapRoom extends CustomStyle {
 			if(!doors.isEmpty()) {
 				for(String key : doors) {
 					Door dr = new Door(key);
-					dr.load("doors\\" + key);
+					if(!dr.load("doors\\" + key)) {
+						Main.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load door style " + key);
+						return false;
+					}
 					door.add(dr, file.getInt("door." + key));
 				}
 			}
@@ -111,7 +120,10 @@ public class CustomMapRoom extends CustomStyle {
 			if(!floorings.isEmpty()) {
 				for(String key : floorings) {
 					FloorStyle flr = new FloorStyle(key);
-					flr.load("floors\\" + key);
+					if(!flr.load("floors\\" + key)) {
+						Main.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load floor style " + key);
+						return false;
+					}
 					flooring.add(flr, file.getInt("flooring." + key));
 				}
 			}
@@ -185,5 +197,17 @@ public class CustomMapRoom extends CustomStyle {
 	}
 	public void setFlooring(RandomCollection<FloorStyle> flooring) {
 		this.flooring = flooring;
+	}
+	public RandomCollection<RoofStyle> getRoofs() {
+		return roofs;
+	}
+	public void setRoofs(RandomCollection<RoofStyle> roofs) {
+		this.roofs = roofs;
+	}
+	public String getRoofType() {
+		return roofType;
+	}
+	public void setRoofType(String roofType) {
+		this.roofType = roofType;
 	}
 }
