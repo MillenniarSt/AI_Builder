@@ -1,4 +1,2 @@
-0:
-  0:
-    0:
-      type: 'planks'
+repeat: 'simple\planks'
+size: 1
