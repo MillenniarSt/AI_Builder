@@ -1,4 +1,2 @@
-0:
-  0:
-    0:
-      type: 'block'
+repeat: 'simple\block'
+size: 1
