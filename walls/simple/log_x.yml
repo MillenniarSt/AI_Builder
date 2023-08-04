@@ -1,6 +1,2 @@
-0:
-  0:
-    0:
-      type: 'log'
-      properties:
-        axis: 'x'
+repeat: 'simple\block'
+top: 'simple\log_x'
