@@ -1,2 +1,2 @@
-repeat: 'block'
-bottom: 'stairs_bottom'
+repeat: 'simple\block'
+bottom: 'simple\stairs_bottom'
