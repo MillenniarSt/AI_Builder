@@ -9,8 +9,10 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import Building.BuildingPalaceStyle;
-import Building.BuildingStyle;
+import Style.BuildingPalaceStyle;
+import Style.BuildingStyle;
+import Style.Loader;
+import Style.Style;
 
 /*
 *           |\       /|                          __                 __    ___  __

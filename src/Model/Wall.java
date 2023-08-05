@@ -3,6 +3,10 @@ package Model;
 import Building.Building;
 import Exception.AIObjectNotFoundException;
 import Main.Main;
+import Style.Door;
+import Style.Model;
+import Style.WallStyle;
+import Style.Window;
 
 /*
 *           |\       /|                          __                 __    ___  __
@@ -46,9 +50,9 @@ public class Wall {
 	public void build(Building building) throws AIObjectNotFoundException {
 		Main.printDebug("Building wall " + this);
 		building.getStyle().changeIndexs();
-		if(style.getModelBotton().getSizeY() + style.getModelUp().getSizeY() > high) {
-			style.setModelBotton(new Model());
-			style.setModelUp(new Model());
+		boolean bottomTop = true;
+		if(style.getModelBotton().getMaxY() + style.getModelUp().getMinY() +2 > high) {
+			bottomTop = false;
 		}
 		
 		int variationCorner = 0;
@@ -85,12 +89,14 @@ public class Wall {
 				}
 			}
 			Main.printDebug("Building wall's models");
-			style.getModelBotton().buildRepeatNorth(new Position(origin.getPosX() + variationCorner, origin.getPosZ(), origin.getPosY()), 
-													new Position(end.getPosX(), origin.getPosZ(), origin.getPosY()), 0);
-			style.getModelUp().buildRepeatNorth(new Position(origin.getPosX() + variationCorner, origin.getPosZ(), end.getPosY()), 
-												new Position(end.getPosX(), origin.getPosZ(), end.getPosY()), 0);
+			if(style.getModelBotton() != null && bottomTop)
+				style.getModelBotton().buildRepeatNorth(new Position(origin.getPosX() + variationCorner, origin.getPosZ(), origin.getPosY()), 
+						new Position(end.getPosX(), origin.getPosZ(), origin.getPosY()), 0);
+			if(style.getModelUp() != null && bottomTop)
+				style.getModelUp().buildRepeatNorth(new Position(origin.getPosX() + variationCorner, origin.getPosZ(), end.getPosY()), 
+						new Position(end.getPosX(), origin.getPosZ(), end.getPosY()), 0);
 			style.getModelRepeat().buildRepeat2North(new Position(origin.getPosX() + variationCorner, origin.getPosZ(), end.getPosY() + style.getModelBotton().getMaxY() +1), 
-													new Position(end.getPosX(), origin.getPosZ(), end.getPosY() - style.getModelUp().getMinY() -1), 0);
+					new Position(end.getPosX(), origin.getPosZ(), end.getPosY() - style.getModelUp().getMinY() -1), 0);
 			if(door != null) {
 				Main.printDebug("Building wall's door");
 				door.getModel().build(building, door.getOrigin());
@@ -120,24 +126,27 @@ public class Wall {
 				}
 			}
 			Main.printDebug("Building wall's models");
-			style.getModelBotton().buildRepeatEast(new Position(origin.getPosX(), origin.getPosZ() - variationCorner, origin.getPosY()), 
-												new Position(origin.getPosX(), end.getPosZ(), origin.getPosY()), 0);
-			style.getModelUp().buildRepeatEast(new Position(origin.getPosX(), origin.getPosZ() - variationCorner, end.getPosY()), 
-												new Position(origin.getPosX(), end.getPosZ(), end.getPosY()), 0);
+			if(style.getModelBotton() != null && bottomTop)
+				style.getModelBotton().buildRepeatEast(new Position(origin.getPosX(), origin.getPosZ() - variationCorner, origin.getPosY()), 
+						new Position(origin.getPosX(), end.getPosZ(), origin.getPosY()), 0);
+			if(style.getModelUp() != null && bottomTop)
+				style.getModelUp().buildRepeatEast(new Position(origin.getPosX(), origin.getPosZ() - variationCorner, end.getPosY()), 
+						new Position(origin.getPosX(), end.getPosZ(), end.getPosY()), 0);
 			style.getModelRepeat().buildRepeat2East(new Position(origin.getPosX(), origin.getPosZ() - variationCorner, origin.getPosY() + style.getModelBotton().getMaxY() +1), 
 												new Position(origin.getPosX(), end.getPosZ(), origin.getPosY() - style.getModelBotton().getMinY() -1), 0);
 			if(door != null) {
 				Main.printDebug("Building wall's door");
-				door.getModel().rotate(90);
-				door.getModel().build(building, door.getOrigin());
+				Model doorModel = door.getModel().cloneRotate(90);
+				doorModel.build(building, door.getOrigin());
 			} else {
 				Main.printDebug("Building wall's windows");
+				Model windowModel = window.getModel().cloneRotate(90);
 				int z = origin.getPosZ() - variationCorner - disWindows;
 				for(int i = 1; i <= windows; i++) {
 					if(disWindowsAdd > 0)
 						z--;
-					window.getModel().build(building, end.getPosX(), z, origin.getPosY() + window.getHigh());
-					z = z - window.getModel().getSizeX() - disWindows;
+					windowModel.build(building, end.getPosX(), z, origin.getPosY() + window.getHigh());
+					z = z - windowModel.getSizeX() - disWindows;
 					disWindowsAdd--;
 				}
 			}
@@ -156,24 +165,27 @@ public class Wall {
 				}
 			}
 			Main.printDebug("Building wall's models");
-			style.getModelBotton().buildRepeatSouth(new Position(origin.getPosX() - variationCorner, origin.getPosZ(), origin.getPosY()), 
-													new Position(end.getPosX(), origin.getPosZ(), origin.getPosY()), 0);
-			style.getModelUp().buildRepeatSouth(new Position(origin.getPosX() - variationCorner, origin.getPosZ(), end.getPosY()), 
-													new Position(end.getPosX(), origin.getPosZ(), end.getPosY()), 0);
+			if(style.getModelBotton() != null && bottomTop)
+				style.getModelBotton().buildRepeatSouth(new Position(origin.getPosX() - variationCorner, origin.getPosZ(), origin.getPosY()), 
+						new Position(end.getPosX(), origin.getPosZ(), origin.getPosY()), 0);
+			if(style.getModelUp() != null && bottomTop)
+				style.getModelUp().buildRepeatSouth(new Position(origin.getPosX() - variationCorner, origin.getPosZ(), end.getPosY()), 
+						new Position(end.getPosX(), origin.getPosZ(), end.getPosY()), 0);
 			style.getModelRepeat().buildRepeat2South(new Position(origin.getPosX() - variationCorner, origin.getPosZ(), end.getPosY() + style.getModelBotton().getMaxY() +1), 
-													new Position(end.getPosX(), origin.getPosZ(), end.getPosY() - style.getModelUp().getMinY() -1), 0);
+					new Position(end.getPosX(), origin.getPosZ(), end.getPosY() - style.getModelUp().getMinY() -1), 0);
 			if(door != null) {
 				Main.printDebug("Building wall's door");
-				door.getModel().rotate(180);
-				door.getModel().build(building, door.getOrigin());
+				Model doorModel = door.getModel().cloneRotate(180);
+				doorModel.build(building, door.getOrigin());
 			} else {
 				Main.printDebug("Building wall's windows");
+				Model windowModel = window.getModel().cloneRotate(180);
 				int x = origin.getPosX() - variationCorner - disWindows;
 				for(int i = 1; i <= windows; i++) {
 					if(disWindowsAdd > 0)
 						x--;
-					window.getModel().build(building, x, end.getPosZ(), origin.getPosY() + window.getHigh());
-					x = x - window.getModel().getSizeX() - disWindows;
+					windowModel.build(building, x, end.getPosZ(), origin.getPosY() + window.getHigh());
+					x = x - windowModel.getSizeX() - disWindows;
 					disWindowsAdd--;
 				}
 			}
@@ -191,24 +203,27 @@ public class Wall {
 				}
 			}
 			Main.printDebug("Building wall's models");
-			style.getModelBotton().buildRepeatWest(new Position(origin.getPosX(), origin.getPosZ() + variationCorner, origin.getPosY()), 
-					new Position(origin.getPosX(), end.getPosZ(), origin.getPosY()), 0);
-			style.getModelUp().buildRepeatWest(new Position(origin.getPosX(), origin.getPosZ() + variationCorner, end.getPosY()), 
-					new Position(origin.getPosX(), end.getPosZ(), end.getPosY()), 0);
+			if(style.getModelBotton() != null && bottomTop)
+				style.getModelBotton().buildRepeatWest(new Position(origin.getPosX(), origin.getPosZ() + variationCorner, origin.getPosY()), 
+						new Position(origin.getPosX(), end.getPosZ(), origin.getPosY()), 0);
+			if(style.getModelUp() != null && bottomTop)
+				style.getModelUp().buildRepeatWest(new Position(origin.getPosX(), origin.getPosZ() + variationCorner, end.getPosY()), 
+						new Position(origin.getPosX(), end.getPosZ(), end.getPosY()), 0);
 			style.getModelRepeat().buildRepeat2West(new Position(origin.getPosX(), origin.getPosZ() + variationCorner, origin.getPosY() + style.getModelBotton().getMaxY() +1), 
 					new Position(origin.getPosX(), end.getPosZ(), origin.getPosY() - style.getModelBotton().getMinY() -1), 0);
 			if(door != null) {
 				Main.printDebug("Building wall's door");
-				door.getModel().rotate(270);
-				door.getModel().build(building, door.getOrigin());
+				Model doorModel = door.getModel().cloneRotate(270);
+				doorModel.build(building, door.getOrigin());
 			} else {
 				Main.printDebug("Building wall's windows");
+				Model windowModel = window.getModel().cloneRotate(270);
 				int z = origin.getPosZ() + variationCorner + disWindows;
 				for(int i = 1; i <= windows; i++) {
 					if(disWindowsAdd > 0)
 						z++;
-					window.getModel().build(building, end.getPosX(), z, origin.getPosY() + window.getHigh());
-					z = z + window.getModel().getSizeX() + disWindows;
+					windowModel.build(building, end.getPosX(), z, origin.getPosY() + window.getHigh());
+					z = z + windowModel.getSizeX() + disWindows;
 					disWindowsAdd--;
 				}
 			}

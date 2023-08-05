@@ -10,7 +10,7 @@ import Exception.OverlapMapException;
 import Exception.RoomNotFoundException;
 import Main.Main;
 import Model.Position;
-import Model.WallStyle;
+import Style.WallStyle;
 
 /*
 *           |\       /|                          __                 __    ___  __

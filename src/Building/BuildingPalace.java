@@ -9,10 +9,11 @@ import Exception.AIObjectNotFoundException;
 import Exception.IdNotFoundException;
 import Exception.OverlapMapException;
 import Main.Main;
-import Main.Style;
 import Map.MapFloor;
 import Map.MapRoom;
 import Model.Room;
+import Style.BuildingPalaceStyle;
+import Style.Style;
 
 /*
 *           |\       /|                          __                 __    ___  __

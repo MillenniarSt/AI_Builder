@@ -1,9 +1,6 @@
 package Model;
 
-import java.util.ArrayList;
-
-import Map.MapFloor;
-import Map.MapRoom;
+import Style.RoofStyle;
 
 /*
 *           |\       /|                          __                 __    ___  __
@@ -27,9 +24,9 @@ public class RoofOrientable extends Roof {
 	
 	public RoofOrientable generate(Room room, RoofStyle style) {
 		if(room.getMap().getLenghtX() > room.getMap().getLenghtZ())
-			return new RoofOrientable("abstract", true, style);
+			return new RoofOrientable("rotable", true, style);
 		else
-			return new RoofOrientable("abstract", false, style);
+			return new RoofOrientable("rotable", false, style);
 	}
 
 	public void setRotation(boolean rotation) {

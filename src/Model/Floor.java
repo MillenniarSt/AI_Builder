@@ -2,6 +2,8 @@ package Model;
 
 import Building.Building;
 import Main.Main;
+import Style.FloorStyle;
+import Style.Model;
 
 /*
 *           |\       /|                          __                 __    ___  __
@@ -39,111 +41,33 @@ public class Floor {
 	public void build(Building building) {
 		Main.printDebug("Building floor " + this);
 		building.getStyle().changeIndexs();
-		int ix;
-		int iz;
-		int iy;
-		int varCeilingOri;
-		int varCeilingEnd;
-		if(ceiling) {
-			varCeilingOri = 1;
-			varCeilingEnd = 0;
-		} else {
-			varCeilingOri = 0;
-			varCeilingEnd = 1;
-		}
 		
 		if(style.getSide() != null) {
 			Main.printDebug("Building floor side model");
-			int variationCornerX = style.getCorner().getSizeX();
-			int variationCornerZ = style.getCorner().getSizeZ();
-			Model sideNorth = style.getSide().clone();
-			Model sideEast = style.getSide().clone();
-			sideEast.rotate(90);
-			Model sideSouth = style.getSide().clone();
-			sideSouth.rotate(180);
-			Model sideWest = style.getSide().clone();
-			sideWest.rotate(270);
-			ix = 0;
-			for(int x = origin.getPosX() + variationCornerX; x <= end.getPosX() - variationCornerZ; x++) {
-				iz = 0;
-				for(int z = origin.getPosZ(); z >= origin.getPosZ() - sideNorth.getSizeZ() +1; z--) {
-					iy = 0;
-					for(int y = origin.getPosY() - ((sideNorth.getSizeY() -1) * varCeilingOri); y <= origin.getPosY() + ((sideNorth.getSizeY() -1) * varCeilingEnd); y++) {
-						building.setPos(x, z, y, sideNorth.getDataPos(ix, iz, iy));
-						iy++;
-					}
-					iz--;
-				}
-				ix++;
-				if(ix >= sideNorth.getSizeX())
-					ix = 0;
+			int variationCornerX = 0;
+			int variationCornerZ = 0;
+			if(style.getCorner() != null) {
+				variationCornerX = style.getCorner().getMaxX() +1;
+				variationCornerZ = style.getCorner().getMaxZ() +1;
 			}
-			iz = 0;
-			for(int z = origin.getPosZ() - variationCornerX; z >= end.getPosZ() + variationCornerZ; z--) {
-				ix = 0;
-				for(int x = end.getPosX(); x >= end.getPosX() - sideEast.getSizeX() +1; x--) {
-					iy = 0;
-					for(int y = origin.getPosY() - ((sideEast.getSizeY() -1) * varCeilingOri); y <= origin.getPosY() + ((sideEast.getSizeY() -1) * varCeilingEnd); y++) {
-						building.setPos(x, z, y, sideEast.getDataPos(ix, iz, iy));
-						iy++;
-					}
-					ix--;
-				}
-				iz--;
-				if(iz <= sideEast.getSizeZ() * -1)
-					iz = 0;
-			}
-			ix = 0;
-			for(int x = end.getPosX() - variationCornerX; x >= origin.getPosX() + variationCornerZ; x--) {
-				iz = 0;
-				for(int z = end.getPosZ(); z <= end.getPosZ() + sideSouth.getSizeZ() -1; z++) {
-					iy = 0;
-					for(int y = origin.getPosY() - ((sideSouth.getSizeY() -1) * varCeilingOri); y <= origin.getPosY() + ((sideSouth.getSizeY() -1) * varCeilingEnd); y++) {
-						building.setPos(x, z, y, sideSouth.getDataPos(ix, iz, iy));
-						iy++;
-					}
-					iz++;
-				}
-				ix--;
-				if(ix <= sideSouth.getSizeX() * -1)
-					ix = 0;
-			}
-			iz = 0;
-			for(int z = end.getPosZ() + variationCornerX; z <= origin.getPosZ() - variationCornerZ; z++) {
-				ix = 0;
-				for(int x = origin.getPosX(); x <= origin.getPosX() + sideWest.getSizeX() -1; x++) {
-					iy = 0;
-					for(int y = origin.getPosY() - ((sideWest.getSizeY() -1) * varCeilingOri); y <= origin.getPosY() + ((sideWest.getSizeY() -1) * varCeilingEnd); y++) {
-						building.setPos(x, z, y, sideWest.getDataPos(ix, iz, iy));
-						iy++;
-					}
-					ix++;
-				}
-				iz++;
-				if(iz >= sideWest.getSizeZ())
-					iz = 0;
-			}
+			
+			style.getSide().buildRepeatNorth(new Position(origin.getPosX() + variationCornerX, origin.getPosZ(), origin.getPosY()), 
+					new Position(end.getPosX() - variationCornerZ, origin.getPosZ(), origin.getPosY()), 0);
+			style.getSide().buildRepeatEast(new Position(end.getPosX(), origin.getPosZ() - variationCornerX, origin.getPosY()), 
+					new Position(end.getPosX(), end.getPosZ() + variationCornerZ, origin.getPosY()), 0);
+			style.getSide().buildRepeatSouth(new Position(end.getPosX() - variationCornerX, end.getPosZ(), origin.getPosY()), 
+					new Position(origin.getPosX() + variationCornerZ, end.getPosZ(), origin.getPosY()), 0);
+			style.getSide().buildRepeatWest(new Position(origin.getPosX(), end.getPosZ() + variationCornerX, origin.getPosY()), 
+					new Position(origin.getPosX(), origin.getPosZ() - variationCornerZ, origin.getPosY()), 0);
 		}
-		Main.printDebug("Building floor model");
-		int variationSide = 0;
-		if(style.getSide() != null)
-			variationSide = style.getSide().getSizeZ();
-		ix = 0;
-		for(int x = origin.getPosX() + variationSide; x <= end.getPosX() - variationSide; x++) {
-			iz = 0;
-			for(int z = origin.getPosZ() - variationSide; z >= end.getPosZ() + variationSide; z--) {
-				iy = 0;
-				for(int y = origin.getPosY() - ((style.getRepeat().getSizeY() -1) * varCeilingOri); y <= origin.getPosY() + ((style.getRepeat().getSizeY() -1) * varCeilingEnd); y++) {
-					building.setPos(x, z, y, style.getRepeat().getDataPos(ix, iz, iy));
-					iy++;
-				}
-				iz--;
-				if(iz <= style.getRepeat().getSizeZ() * -1)
-					iz = 0;
-			}
-			ix++;
-			if(ix >= style.getRepeat().getSizeX())
-				ix = 0;
+		if(style.getRepeat() != null) {
+			Main.printDebug("Building floor repeat model");
+			int variationSide = 0;
+			if(style.getSide() != null)
+				variationSide = style.getSide().getSizeZ();
+			
+			style.getRepeat().buildRepeat2Down(new Position(origin.getPosX() + variationSide, origin.getPosZ() - variationSide, origin.getPosY()), 
+					new Position(end.getPosX() - variationSide, origin.getPosZ() + variationSide, origin.getPosY()));
 		}
 		
 		if(style.getCorner() != null) {

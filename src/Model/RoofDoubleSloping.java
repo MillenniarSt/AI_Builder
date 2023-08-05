@@ -1,5 +1,7 @@
 package Model;
 
+import Style.RoofStyle;
+
 public class RoofDoubleSloping extends RoofOrientable {
 
 	public static final String type = "double_sloping";

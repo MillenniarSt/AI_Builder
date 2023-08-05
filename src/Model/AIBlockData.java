@@ -7,7 +7,7 @@ import org.bukkit.Material;
 
 import Exception.AIObjectNotFoundException;
 import Main.RandomCollection;
-import Main.Style;
+import Style.Style;
 
 /*
 *           |\       /|                          __                 __    ___  __

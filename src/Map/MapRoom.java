@@ -1,8 +1,7 @@
 package Map;
 
 import Exception.AIObjectNotFoundException;
-import Model.Door;
-import Model.RoofStyle;
+import Style.Door;
 
 /*
 *           |\       /|                          __                 __    ___  __

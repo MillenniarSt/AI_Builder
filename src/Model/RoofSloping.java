@@ -1,6 +1,18 @@
 package Model;
 
-import Main.CommandExe;
+import Main.Main;
+import Style.RoofStyle;
+
+/*
+*           |\       /|                          __                 __    ___  __
+*           | \     / |   ______    /\    |     |  \  |   | | |    |  \  |    |  \
+*           |  \   /  |  /         /  \   |     |__/  |   | | |    |   | |___ |__/
+*           |   \_/   | |         /----\  |     |   \ |   | | |    |   | |    |  \
+*           |         |  \____   /      \ |     |___/  \_/  | |___ |__/  |___ |   \
+*           |         |       \
+*           |         |        |      AI Builder  ---   By Millenniar Studios
+*           |         | ______/
+*/
 
 public class RoofSloping extends RoofOrientable {
 
@@ -19,21 +31,18 @@ public class RoofSloping extends RoofOrientable {
 	}
 	
 	public void build() {
+		Main.printDebug("Building sloping roof");
 		if(isRotation()) {
-			int ix = 0;
-			for(int x = getOrigin().getPosX(); x <= getEnd().getPosX(); x++) {
-				int iz = 0;
-				for(int z = getOrigin().getPosZ() + getStyle().getVarSide(); z <= getOrigin().getPosZ() + getStyle().getVarSide() + getStyle().getSideBase().getMaxZ(); z++) {
-					int iy = getStyle().getSideBase().getMinY();
-					for(int y = getOrigin().getPosY() + getStyle().getBase() + getStyle().getSideBase().getMinY(); y <= getOrigin().getPosY() + getStyle().getBase() + getStyle().getSideBase().getMaxY(); y++) {
-						CommandExe.getCurrentBuilding().setPos(x, z, y, getStyle().getSideBase().getDataPos(ix, iz, iy));
-						iy++;
-					}
-					iz++;
-				}
-				ix++;
-				if(ix > getStyle().getSideBase().getMaxX())
-					ix = 0;
+			if(getStyle().getSideBase() != null) {
+				Main.printDebug("Building roof sides");
+				
+				getStyle().getSideBase().buildRepeatNorth(new Position(getOrigin().getPosX(), getOrigin().getPosZ(), getOrigin().getPosY() + getStyle().getBase()), 
+						new Position(getEnd().getPosX(), getOrigin().getPosZ(), getOrigin().getPosY() + getStyle().getBase()), 0);
+				getStyle().getSideBase().buildRepeatSouth(new Position(getOrigin().getPosX(), getEnd().getPosZ(), getOrigin().getPosY() + getStyle().getBase()), 
+						new Position(getEnd().getPosX(), getEnd().getPosZ(), getOrigin().getPosY() + getStyle().getBase()), 0);
+			}
+			if(getStyle().getRepeat() != null) {
+				Main.printDebug("Building roof repeat");
 			}
 		}
 	}

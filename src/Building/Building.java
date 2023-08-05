@@ -6,9 +6,10 @@ import org.bukkit.Location;
 import org.bukkit.block.Block;
 
 import Main.RandomCollection;
-import Main.Style;
 import Model.AIBlockData;
 import Model.Position;
+import Style.BuildingStyle;
+import Style.Style;
 
 /*
 *           |\       /|                          __                 __    ___  __

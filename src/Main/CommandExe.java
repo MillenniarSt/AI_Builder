@@ -9,8 +9,9 @@ import org.bukkit.entity.Player;
 
 import Building.Building;
 import Building.BuildingPalace;
-import Building.BuildingPalaceStyle;
-import Building.BuildingStyle;
+import Style.BuildingPalaceStyle;
+import Style.BuildingStyle;
+import Style.Style;
 
 /*
 *           |\       /|                          __                 __    ___  __

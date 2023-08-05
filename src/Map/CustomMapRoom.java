@@ -9,13 +9,13 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import Exception.AIObjectNotFoundException;
 import Exception.FloorNotFoundException;
-import Main.CustomStyle;
 import Main.Main;
 import Main.Random;
 import Main.RandomCollection;
-import Model.Door;
-import Model.FloorStyle;
-import Model.RoofStyle;
+import Style.CustomStyle;
+import Style.Door;
+import Style.FloorStyle;
+import Style.RoofStyle;
 
 /*
 *           |\       /|                          __                 __    ___  __
