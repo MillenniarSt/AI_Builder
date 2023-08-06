@@ -1,0 +1,11 @@
+name: 'medieval'
+groups:
+  wall:
+    0:
+      oak: 2
+      spruce: 1
+    1:
+      stone: 1
+      stone_bricks: 1
+      andesite: 1
+  
