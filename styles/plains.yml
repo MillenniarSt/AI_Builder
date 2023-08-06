@@ -1,0 +1,19 @@
+name: 'plains'
+color:
+  green: 3
+  lime: 2
+groups:
+  wall-wood:
+    oak:
+      oak: 1
+  wall:
+    stone:
+      stone: 2
+      cobblestone: 1
+      andesite: 1
+    stone-bricks:
+      stone: 1
+      stone_bricks: 2
+      cobblestone: 1
+    light
+      
