@@ -21,10 +21,30 @@ wall:
     blackstone: 2
     chorus_flower: 1
 floor:
-  luminoso a scacchiera
+  sotteraneo a scacchiera: 1
     spruce_log: 1
-    
-    
+       properties: 
+         east
+    deepstlate_brick: 1
+  luminoso a scacchiera: 1
+    glowstone: 1
+    deepstlate_brick: 1
+  arancione a scacchiera
+    deepstlate_brick: 1
+    shroomlight: 1
+  luce soffusa a scacchiera: 1
+    deepstlate_brick: 1
+    sea_lantern: 1
+  rana scacchiera: 1
+    verdant_froglight: 1
+    pearlescent_froglight:1
+  rana scacchiera 2: 1
+    pearlescent_froglight: 1
+    ochre_froglight: 1
+  rana combinazione 3: 1
+    verdant_froglight: 1
+    ochre_froglight: 1
+  
     
     
 
