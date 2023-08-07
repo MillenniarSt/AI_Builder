@@ -24,7 +24,7 @@ floor:
   sotteraneo a scacchiera: 1
     spruce_log: 1
        properties: 
-         east
+         east: true
     deepstlate_brick: 1
   luminoso a scacchiera: 1
     glowstone: 1
@@ -44,6 +44,17 @@ floor:
   rana combinazione 3: 1
     verdant_froglight: 1
     ochre_froglight: 1
+  acquatico:1
+    prismarine_bricks: 1
+    prismarine: 1
+    stripped_mangrove_wood: 1
+  nether: 1
+    crimson_stem: 1
+      properties: 
+         north: true 
+    nether_bricks: 1
+
+    
   
     
     
