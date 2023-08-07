@@ -1,6 +1,15 @@
 name: 'Moderno'
 groups:
   wall:
-
- 
+  grattacieli:
+    light_gray_concrete: 3
+    White Concrete: 1
+    light_gray_concrete_powder: 3
+    white_concrete_powder: 1
+    quarz_block: 1
+    birch: 1
+  villa:
+    smooth_quarz_block: 1
+    quarz_block: 1
+  
 
