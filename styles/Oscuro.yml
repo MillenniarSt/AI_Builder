@@ -1,6 +1,7 @@
 name: 'Oscuro'
 groups:
-  wall_stone:
-    black_stone = 1
-     
+  wall-stone:
+    black_stone = 3
+    deepstlate_brick = 2
+    
  
