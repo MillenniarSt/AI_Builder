@@ -1,5 +1,6 @@
 name: 'Oscuro'
 groups:
   wall_stone:
-    Black_stone = 1
+    black_stone = 1
+     
  
