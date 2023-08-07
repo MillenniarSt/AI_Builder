@@ -28,3 +28,16 @@ groups:
       oak: 1
     birch:
       birch: 1
+  floor:
+    stone:
+      stone: 2
+      cobblestone: 1
+      andesite: 1
+    stone-bricks:
+      stone: 1
+      stone_bricks: 2
+      cobblestone: 1
+    light-stone:
+      smooth_stone: 2
+      stone: 1
+      diorite: 1
