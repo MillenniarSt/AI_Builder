@@ -15,5 +15,16 @@ groups:
       stone: 1
       stone_bricks: 2
       cobblestone: 1
-    light
-      
+    light-stone:
+      smooth_stone: 2
+      stone: 1
+      diorite: 1
+    diorite:
+      diorite: 1
+      polished_diorite: 1
+      smooth_stone: 1
+  floor-wood:
+    oak:
+      oak: 1
+    birch:
+      birch: 1
