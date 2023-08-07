@@ -1,11 +1,11 @@
 name: 'medieval'
 color:
-- 'brown'
+brown: 1
 groups:
   wall-wood:
-    spruce:
+    spruce: 3
       spruce: 1
-    oak:
+    oak: 2
       oak: 1
   wall:
     stone:
