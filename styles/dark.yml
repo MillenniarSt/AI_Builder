@@ -63,5 +63,9 @@ name: 'dark'
        stripped_warped_stem: 1
        warped_stem: 2
        quartz_pillar: 1
-     chiaro:
-       
+     light-block:
+       birch_planks: 1
+       stripped_birch_wood: 2
+       stripped_oak_wood: 2
+       white_terracotta: 2
+   
