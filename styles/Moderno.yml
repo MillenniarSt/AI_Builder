@@ -1,28 +1,28 @@
 name: 'Moderno'
 groups:
   wall:
-  grattacieli:
-    light_gray_concrete: 3
-    white_concrete: 1
-    light_gray_concrete_powder: 3
-    white_concrete_powder: 1
-    smooth_basalt: 1
-    quarz_block: 1
-    birch: 1
-  villa:
-    smooth_quarz_block: 3
-    quarz_block: 2
-    chiseled_quartz_block: 1
-  supermercato:
-    smooth_quarz_block: 4
-    quarz_block: 2
-    stripped_jungle_wood: 1
-    cyan_terracotta: 3
-  ospedale:
-    cyan_terracotta: 3
-    quarz_block: 1
-    smooth_quarz_block: 2
-    chiseled_quarz_block: 1
-floor:
+    grattacieli:
+      light_gray_concrete: 3
+      white_concrete: 1
+      light_gray_concrete_powder: 3
+      white_concrete_powder: 1
+      smooth_basalt: 1
+      quarz_block: 1
+      birch: 1
+    villa:
+      smooth_quarz_block: 3
+      quarz_block: 2
+      chiseled_quartz_block: 1
+    supermercato:
+      smooth_quarz_block: 4
+      quarz_block: 2
+      stripped_jungle_wood: 1
+      cyan_terracotta: 3
+    ospedale:
+      cyan_terracotta: 3
+      quarz_block: 1
+      smooth_quarz_block: 2
+      chiseled_quarz_block: 1
+  floor:
   
 
