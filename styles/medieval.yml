@@ -1,6 +1,6 @@
 name: 'medieval'
 color:
-brown: 1
+  brown: 1
 groups:
   wall-wood:
     spruce: 3
