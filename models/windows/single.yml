@@ -1,0 +1,11 @@
+model:
+  0:
+    0:
+      0:
+        material: 'glass_pane'
+    -1:
+      0:
+        type: 'slab'
+        group: 'window'
+        properties:
+          half: 'upper'
