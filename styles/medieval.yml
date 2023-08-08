@@ -117,6 +117,33 @@ groups:
   roof-wood-overlay:
     dark-oak:
       dark_oak: 1
+  roof:
+    andesite:
+      andesite: 1
+      stone: 1
+      polished_andesite: 1
+    stone-bricks:
+      stone_bricks: 1
+      polished_andesite: 1
+    cobblestone:
+      stone: 2
+      cobblestone: 3
+      andesite: 2
+  roof-base:
+    andesite:
+      andesite: 1
+      stone: 1
+      polished_andesite: 1
+    cobblestone:
+      stone: 2
+      cobblestone: 3
+      andesite: 2
+  roof-overlay:
+    stone-bricks:
+      stone_bricks: 1
+      polished_andesite: 1
+    deepslate:
+      smooth_deepslate
   leaves:
     oak:
       oak: 1
