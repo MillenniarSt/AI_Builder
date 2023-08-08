@@ -25,3 +25,32 @@ groups:
       chiseled_quarz_block: 1
   floor:
     pattern-1:
+      black_glazed_terracotta: 1
+    pattern-2:
+      blue_glazed_terracotta: 1
+    pattern-3:
+      brown_glazed_terracotta: 1
+    pattern-4:
+      cyan_glazed_terracotta: 1
+    pattern-5:
+      gray_glazed_terracotta: 1
+    pattern-6:
+      green_glazed_terracotta: 1
+    pattern-7:
+      light_blue_glazed_terracotta: 1
+    pattern-8
+      light_gray_glazed_terracotta: 1
+    pattern-9
+      lime_glazed_terracotta: 1
+    pattern-10:
+      orange_glazed_terracotta: 1
+    pattern-11:
+      pink_glazed_terracotta: 1
+    pattern-12:
+      purple_glazed_terracotta: 1
+    pattern-13:
+      red_glazed_terracotta: 1
+    pattern-14
+      white_glazed_terracotta: 1
+    pattern-15:
+      yellow_glazed_terracotta: 1
