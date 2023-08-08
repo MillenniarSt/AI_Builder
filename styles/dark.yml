@@ -57,3 +57,11 @@ name: 'dark'
      nether:  
        crimson_stem: 1 
        nether_bricks: 1
+       red_nether_bricks: 1
+       smooth_basalt: 1
+     nether-blu:
+       stripped_warped_stem: 1
+       warped_stem: 2
+       quartz_pillar: 1
+     chiaro:
+       
