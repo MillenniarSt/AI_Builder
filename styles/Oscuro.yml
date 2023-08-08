@@ -21,27 +21,25 @@ wall:
     blackstone: 2
     chorus_flower: 1
 floor:
-  sotteraneo a scacchiera: 
+  sotteraneo-a-scacchiera: 
     spruce_log: 1
-       properties: 
-         east: true
     deepstlate_brick: 1
-  luminoso a scacchiera: 
+  luminoso-a-scacchiera: 
     glowstone: 1
     deepstlate_brick: 1
-  arancione a scacchiera
+  arancione-a-scacchiera
     deepstlate_brick: 1
     shroomlight: 1
-  luce soffusa a scacchiera: 
+  luce-soffusa-a-scacchiera: 
     deepstlate_brick: 1
     sea_lantern: 1
-  rana scacchiera: 
+  rana-scacchiera: 
     verdant_froglight: 1
     pearlescent_froglight: 1
-  rana scacchiera 2: 
+  rana-scacchiera 2: 
     pearlescent_froglight: 1
     ochre_froglight: 1
-  rana combinazione 3: 
+  rana-combinazione 3: 
     verdant_froglight: 1
     ochre_froglight: 1
   acquatico:
@@ -50,8 +48,6 @@ floor:
     stripped_mangrove_wood: 1
   nether: 
     crimson_stem: 1
-      properties: 
-         north: true 
     nether_bricks: 1
 
     
