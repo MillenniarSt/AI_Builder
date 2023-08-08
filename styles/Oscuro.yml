@@ -2,7 +2,7 @@ name: 'dark'
 groups:
   wall:
     deepslate: 
-      deepslate_brick_wall: 1
+      deepslate_brick_wall:.1
       deepstlate_brick: 3
       cracked_deepslate_brick: 2
       cracked_deepslate_tiles: 2
