@@ -134,16 +134,23 @@ groups:
       andesite: 1
       stone: 1
       polished_andesite: 1
+    stone-bricks:
+      stone_bricks: 1
+      polished_andesite: 1
     cobblestone:
       stone: 2
       cobblestone: 3
       andesite: 2
   roof-overlay:
-    stone-bricks:
-      stone_bricks: 1
-      polished_andesite: 1
     deepslate:
-      smooth_deepslate
+      polished_deepslate: 1
+    deepslate-bricks:
+      deepslate_bricks: 3
+      deepslate_tiles: 2
+    all-deepslate:
+      polished_deepslate: 1
+      deepslate_bricks: 1
+      deepslate_tiles: 1
   leaves:
     oak:
       oak: 1
