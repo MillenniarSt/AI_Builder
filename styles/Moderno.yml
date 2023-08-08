@@ -3,7 +3,7 @@ groups:
   wall:
   grattacieli:
     light_gray_concrete: 3
-    White Concrete: 1
+    white_concrete: 1
     light_gray_concrete_powder: 3
     white_concrete_powder: 1
     smooth_basalt: 1
