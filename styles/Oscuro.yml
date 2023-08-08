@@ -20,25 +20,33 @@ groups:
       deepslate_brick: 2
       blackstone: 2
       chorus_flower: 1
-  floor:
+  checkerboard-1:
     sotteraneo-a-scacchiera: 
       spruce_log: 1
-      deepstlate_brick: 1
     luminoso-a-scacchiera: 
       glowstone: 1
-      deepstlate_brick: 1
     arancione-a-scacchiera:
       deepstlate_brick: 1
-      shroomlight: 1
     luce-soffusa-a-scacchiera: 
       deepstlate_brick: 1
-      sea_lantern: 1
     rana-scacchiera: 
       verdant_froglight: 1
-      pearlescent_froglight: 1
     rana-scacchiera 2: 
       pearlescent_froglight: 1
-      ochre_froglight: 1
+  checkerboard-2:
+    sotteraneo-a-scacchiera:
+      deepstlate_brick: 1 
+    luminoso-a-scacchiera:
+      deepstlate_brick: 1
+    arancione-a-scacchiera:
+      shroomlight: 1
+    luce-soffusa-a-scacchiera: 
+      sea_lantern: 1
+    rana-scacchiera: 
+      pearlescent_froglight: 1
+    rana-scacchiera 2:
+      ochre_froglight: 1  
+  floor:
     rana-combinazione 3: 
       verdant_froglight: 1
       ochre_froglight: 1
