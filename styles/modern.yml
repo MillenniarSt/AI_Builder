@@ -38,9 +38,9 @@ groups:
       green_glazed_terracotta: 1
     pattern-7:
       light_blue_glazed_terracotta: 1
-    pattern-8
+    pattern-8:
       light_gray_glazed_terracotta: 1
-    pattern-9
+    pattern-9:
       lime_glazed_terracotta: 1
     pattern-10:
       orange_glazed_terracotta: 1
@@ -50,7 +50,7 @@ groups:
       purple_glazed_terracotta: 1
     pattern-13:
       red_glazed_terracotta: 1
-    pattern-14
+    pattern-14:
       white_glazed_terracotta: 1
     pattern-15:
       yellow_glazed_terracotta: 1
