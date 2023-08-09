@@ -70,7 +70,9 @@ name: 'dark'
        white_terracotta: 2
    window:
      magic:
-       warped_stem
+       warped_stem:
+       mud_brick:
+     
          
       
      
