@@ -85,8 +85,8 @@ name: 'dark'
       yellow_stained_glass: 1
     blood:
       red_stained_glass: 1
-      red_nether_bricks
-      nether_wart_block
+      red_nether_bricks:
+      nether_wart_block: 
       
       
        
