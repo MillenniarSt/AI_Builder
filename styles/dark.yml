@@ -68,6 +68,10 @@ name: 'dark'
        stripped_birch_wood: 2
        stripped_oak_wood: 2
        white_terracotta: 2
+     darker:
+       basalt: 5
+       smooth_basalt: 2
+       coal_block: 1
    window-wood:
      warped:
        warped: 1
