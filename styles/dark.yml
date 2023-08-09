@@ -70,11 +70,26 @@ name: 'dark'
        white_terracotta: 2
    window-wood:
      warped:
-       warped:
-     crimstone:
-       crimson:
-     spruce:
-       spruce:
+       warped: 1
+     crimstone: 
+       crimson: 1
+     spruce: 
+       spruce: 1
+   window:
+     magic:
+       quarz_block: 1
+       smooth_quarz_block: 1
+      polished_blackstone_bricks: 2
+      stone_brick: 1
+      purple_stained_glass: 1
+      yellow_stained_glass: 1
+    blood:
+      red_stained_glass: 1
+      red_nether_bricks
+      nether_wart_block
+      
+      
+       
      
      
          
