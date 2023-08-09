@@ -73,3 +73,61 @@ groups:
       sandstone: 1
       cut_sandstone: 1
       smooth_sandstone: 2
+  roof-wood:
+    jungle:
+      jungle: 1
+  roof-wood-base:
+    jungle:
+      jungle: 1
+  roof-wood-overlay:
+    oak:
+      oak: 1
+  roof:
+    sandstone:
+      sandstone: 2
+      cut_sandstone: 1
+      smooth_sandstone: 1
+    cut-sandstone:
+      sandstone: 1
+      cut_sandstone: 2
+      smooth_sandstone: 1
+    smooth-sandstone:
+      sandstone: 1
+      cut_sandstone: 1
+      smooth_sandstone: 2
+  roof-base:
+    sandstone:
+      sandstone: 2
+      cut_sandstone: 1
+      smooth_sandstone: 1
+    cut-sandstone:
+      sandstone: 1
+      cut_sandstone: 2
+      smooth_sandstone: 1
+    smooth-sandstone:
+      sandstone: 1
+      cut_sandstone: 1
+      smooth_sandstone: 2
+  roof-overlay:
+    sandstone:
+      sandstone: 2
+      cut_sandstone: 1
+      smooth_sandstone: 1
+    cut-sandstone:
+      sandstone: 1
+      cut_sandstone: 2
+      smooth_sandstone: 1
+    smooth-sandstone:
+      sandstone: 1
+      cut_sandstone: 1
+      smooth_sandstone: 2
+  leaves:
+    jungle:
+      jungle: 3
+      oak: 2
+    azalea:
+      jungle: 1
+      azalea: 1
+    acacia:
+      jungle: 1
+      acacia: 1
