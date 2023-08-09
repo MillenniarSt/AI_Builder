@@ -60,4 +60,14 @@ groups:
     classic:
       dark_oak_log: 1
       chiseled_stone_brick: 1
+    pillager:
+      birch_log: 1
+      dark_oak_log: 1
+    dark-white:
+      netherite_block: 1
+      polished_diorite: 1
+  window-wood:
+   
+    
+      
       
