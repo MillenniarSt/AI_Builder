@@ -54,3 +54,10 @@ groups:
       white_glazed_terracotta: 1
     pattern-15:
       yellow_glazed_terracotta: 1
+    brown:
+      dark_oak_log: 1
+      note_block: 1
+    classic:
+      dark_oak_log: 1
+      chiseled_stone_brick: 1
+      
