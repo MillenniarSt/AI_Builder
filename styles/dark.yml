@@ -69,5 +69,9 @@ name: 'dark'
        stripped_oak_wood: 2
        white_terracotta: 2
    window:
+     magic:
+       warped_stem
+         
+      
      
    
