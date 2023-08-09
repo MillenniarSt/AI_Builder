@@ -1,0 +1,7 @@
+name: 'snowy'
+color:
+  light_blue: 1
+  cyan: 1
+  white: 1
+groups:
+  wall-wood:
