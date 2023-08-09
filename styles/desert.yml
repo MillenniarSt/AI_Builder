@@ -1,0 +1,10 @@
+name: 'desert'
+colors:
+  lime: 1
+  yellow: 1
+groups:
+  wall-wood:
+    jungle:
+      jungle: 1
+    birch:
+      birch: 1
