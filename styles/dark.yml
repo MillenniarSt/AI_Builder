@@ -68,10 +68,11 @@ name: 'dark'
        stripped_birch_wood: 2
        stripped_oak_wood: 2
        white_terracotta: 2
-   window:
-     magic:
-       warped_stem:
-       mud_brick:
+   window-wood:
+     warped_stem:
+     crimson_stem:
+     spruce_log:
+     
      
          
       
