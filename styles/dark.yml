@@ -69,9 +69,12 @@ name: 'dark'
        stripped_oak_wood: 2
        white_terracotta: 2
    window-wood:
-     warped_stem:
-     crimson_stem:
-     spruce_log:
+     warped:
+       warped_stem:
+     crimstone:
+       crimson_stem:
+     spruce:
+       spruce_log:
      
      
          
