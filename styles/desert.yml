@@ -109,18 +109,10 @@ groups:
       cut_sandstone: 1
       smooth_sandstone: 2
   roof-overlay:
-    sandstone:
-      sandstone: 2
-      cut_sandstone: 1
-      smooth_sandstone: 1
-    cut-sandstone:
-      sandstone: 1
-      cut_sandstone: 2
-      smooth_sandstone: 1
-    smooth-sandstone:
-      sandstone: 1
-      cut_sandstone: 1
-      smooth_sandstone: 2
+    oak:
+      oak: 1
+    jungle:
+      jungle: 1
   leaves:
     jungle:
       jungle: 3
