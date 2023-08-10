@@ -1,4 +1,11 @@
 name: 'Japanies'
 groups:
+  wall-corner:
+    cherry:
+      che
   wall:
     imperial:
+      stone_brick: 5
+      cobblestone: 2
+      dark_oak_log: 2
+      
