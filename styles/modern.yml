@@ -67,6 +67,46 @@ groups:
       netherite_block: 1
       polished_diorite: 1
   window-wood:
+    oak:
+      oak: 1
+    spruce:
+      spruce: 1
+    birch:
+      birch: 1
+    crimson:
+      crimstone: 1
+    warped:
+      warped: 1
+    dark_oak:
+      dark_oak: 1
+  window:
+    classic-modern:
+      quarz_block: 3
+      smooth_quarz_block: 5
+      chiseled_quartz_block: 1
+    colorful:
+      quarz_block: 3
+      smooth_quarz_block: 1
+      red_concreate: 2
+    appartament:
+      stripped_mangrove_wood: 3
+      deepslate_brick_wall: 1
+      polished_andesite: 1
+.     polished_granite: 1
+    natural:
+      oak_log: 3
+      stripped_oak_wood:3
+      spruce_plank: 5
+      smooth_basalt: 5 
+    end:
+      end_stone_brick: 3
+      stripped_spruce_log: 1
+      stone_brick: 3
+      quarz_block: 3
+      purpur_block: 3
+      purpur_pillar: 1
+    
+     
    
     
       
