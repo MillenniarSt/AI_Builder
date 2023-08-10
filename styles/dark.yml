@@ -22,7 +22,7 @@ name: 'dark'
        chorus_flower: 1 
    checkerboard-1: 
      sotteraneo-a-scacchiera:  
-       spruce_log: 1 
+       spruce: 1 
      luminoso-a-scacchiera:  
        glowstone: 1 
      arancione-a-scacchiera: 
@@ -53,20 +53,20 @@ name: 'dark'
      acquatico: 
        prismarine_bricks: 1 
        prismarine: 1 
-       stripped_mangrove_wood: 1 
+       stripped_mangrove: 1 
      nether:  
-       crimson_stem: 1 
+       crimson: 1 
        nether_bricks: 1
        red_nether_bricks: 1
        smooth_basalt: 1
      nether-blu:
-       stripped_warped_stem: 1
-       warped_stem: 2
+       stripped_warped: 1
+       warped: 2
        quartz_pillar: 1
      light-block:
-       birch_planks: 1
-       stripped_birch_wood: 2
-       stripped_oak_wood: 2
+       birch: 1
+       stripped_birch: 2
+       stripped_oak: 2
        white_terracotta: 2
      darker:
        basalt: 5
