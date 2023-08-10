@@ -1,6 +1,6 @@
 name: 'Japanies'
 groups:
-  wall-wood-overlay
+  wall-wood-overlay:
     cherry:
       stripped_cherry_log: 5
       bamboo_mosaic: 1
