@@ -1,11 +1,54 @@
 name: 'Japanies'
 groups:
-  wall-corner:
+  wall-wood-overlay
     cherry:
-      che
+      stripped_cherry_log: 5
+      bamboo_mosaic: 1
+      cherry_leaves: 3
+    oak:
+      stripped_oak_wood: 3
+      spruce_fence: 1
+    spruce:
+      spruce_log: 5
+      stone_brick_wall: 2
+    dark-oak:
+      stripped_dark_oak_log: 5
+      deepslate_brick_wall: 2
+      oak_leaves: 1
+    mangrove:
+      mangrove_log: 1
+      stripped_mangrove_log: 5
+      oak_fence: 2
+    acacia:
+      stripped_acacia_log: 5
+      see_lantern: 2
+      dark_oak_fence: 1
+    birch:
+      stripped_birch_log: 5
+      mud_brick_wall: 2
+      jungle_leaves: 1
+    bamboo:
+      bamboo_mosaic: 5
+      cherry_leaves: 3
+      birch_fence: 2
+    jungle:
+      stripped_jungle_log: 5
+      bamboo_fence: 2
+      spruce_plank: 1
+    warped:
+      stripped_warped_stem: 5
+      shroomlight: 2
+      blackstone_wall: 1
+    crimson:
+      stripped_crimsone_log: 5
+      nether_wart_block: 2
+      crimsone_fence: 1
   wall:
     imperial:
       stone_brick: 5
       cobblestone: 2
       dark_oak_log: 2
-      
+    rural:
+      stone_brick: 5
+      chiseled_stone_brick: 2
+      cracked_stone_brick: 1
