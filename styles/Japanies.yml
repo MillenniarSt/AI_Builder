@@ -52,3 +52,28 @@ groups:
       stone_brick: 5
       chiseled_stone_brick: 2
       cracked_stone_brick: 1
+    expensive: 
+      white_terracotta: 5
+      quarz_block: 1
+      cherry_trapdor: 2
+    orange:
+      white_wool: 3 
+      quarz_block_stair: 2
+      stripped_acacia_log: 5
+      quarz_block: 2
+    light:
+      cut_sand_stone: 3
+      jungle_trapdor: 3
+      see_lantern: 1
+    blue:
+      light_blue_wool: 2
+      stripped_warped_stem: 2
+      warpend_plank: 2
+    mangrove:
+      mangrove_planks: 2
+      mangrove_fence: 2
+      mangrove trapdor: 1
+    stone:
+      tuff: 1
+      stone: 3
+      birch_trapdor: 1
