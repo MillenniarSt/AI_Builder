@@ -95,7 +95,7 @@ groups:
 .     polished_granite: 1
     natural:
       oak_log: 3
-      stripped_oak_wood:3
+      stripped_oak_wood: 3
       spruce_plank: 5
       smooth_basalt: 5 
     end:
