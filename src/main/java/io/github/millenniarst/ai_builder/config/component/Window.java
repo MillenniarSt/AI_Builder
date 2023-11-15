@@ -35,14 +35,14 @@ public class Window extends Component {
 	
 	@Override
 	public boolean load(String path) {
-		path = "windows\\" + path;
+		path = getDirectoryPath() + path;
 		super.load(path);
 		FileConfiguration file = YamlConfiguration.loadConfiguration(new File(CONFIG + "\\" + path + ".yml"));
 		
 		high = getInt(file, "high", 1, 2);
-		prefDistance = getInt(file, "prefDistance", 1, 2);
+		prefDistance = getInt(file, "pref-distance", 1, 2);
 		
-		String modelPath = file.getString("model", null);
+		String modelPath = getDirectoryPath() + file.getString("model", null);
 		if(modelPath != null) {
 			if(!this.model.load(modelPath)) {
 				AI_Builder.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load window model " + modelPath);
@@ -55,6 +55,10 @@ public class Window extends Component {
 			this.setState(STATE_ERROR);
 			return false;
 		}
+	}
+
+	public String getDirectoryPath() {
+		return "windows\\";
 	}
 	
 	public SingleModel getModel() {

@@ -1,0 +1,15 @@
+0:
+  0:
+    0:
+      type: 'door'
+      properties:
+        facing: 'north'
+        half: 'lower'
+        hinge: 'left'
+  1:
+    0:
+      type: 'door'
+      properties:
+        facing: 'north'
+        half: 'upper'
+        hinge: 'left'

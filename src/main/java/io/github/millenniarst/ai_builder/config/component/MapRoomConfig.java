@@ -1,6 +1,7 @@
 package io.github.millenniarst.ai_builder.config.component;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Set;
 
 import org.bukkit.ChatColor;

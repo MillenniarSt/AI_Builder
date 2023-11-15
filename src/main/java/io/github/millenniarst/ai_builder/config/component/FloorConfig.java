@@ -45,7 +45,7 @@ public class FloorConfig extends Component {
 		super.load(path);
 		FileConfiguration file = YamlConfiguration.loadConfiguration(new File(CONFIG + "\\" + path + ".yml"));
 		
-		String cornerPath = file.getString("model", null);
+		String cornerPath = getDirectoryPath() + file.getString("model", null);
 		if(cornerPath != null)
 			if(!this.model.load(cornerPath)) {
 				AI_Builder.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load floor corner model " + cornerPath);
@@ -58,7 +58,7 @@ public class FloorConfig extends Component {
 		if(centers != null) {
 			if(!centers.isEmpty()) {
 				for(int i = 0; i < 4; i++) {
-					String centerPath = centers.get(i);
+					String centerPath = getDirectoryPath() + centers.get(i);
 					if(centerPath != null) {
 						center[i] = new SingleModel();
 						if(!center[i].load(centerPath)) {

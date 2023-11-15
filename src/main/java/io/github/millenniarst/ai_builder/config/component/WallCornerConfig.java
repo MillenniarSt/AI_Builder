@@ -22,7 +22,6 @@ import org.bukkit.configuration.file.YamlConfiguration;
 public class WallCornerConfig extends Component {
 	
 	private ColumnModel model;
-	private int size;
 	
 	private int relX;
 	private int relZ;
@@ -33,11 +32,10 @@ public class WallCornerConfig extends Component {
 	
 	@Override
 	public boolean load(String path) {
-		path = getDirectoryPath() + path;
 		super.load(path);
 		FileConfiguration file = YamlConfiguration.loadConfiguration(new File(CONFIG + "\\" + path + ".yml"));
 
-		String modelPath = file.getString("model", null);
+		String modelPath = getDirectoryPath() + file.getString("model", null);
 		if(modelPath != null) {
 			if(!this.model.load(modelPath)) {
 				AI_Builder.getConsole().sendMessage(ChatColor.RED + "Fail to load wall corner model " + modelPath);
@@ -48,11 +46,7 @@ public class WallCornerConfig extends Component {
 			this.setState(STATE_ERROR);
 			return false;
 		}
-		
-		int size = file.getInt("size", 1);
-		if(size < 1)
-			size = 1;
-		this.size = size;
+
 		int relX = file.getInt("relX", 1);
 		if(relX < 1)
 			relX = 1;
@@ -65,13 +59,9 @@ public class WallCornerConfig extends Component {
 		this.setState(STATE_ENABLE);
 		return true;
 	}
-
-	public String getDirectoryPath() {
-		return "walls\\corners\\";
-	}
 	
 	public String toString() {
-		return "materials=" + model + ",size=" + size + ",relX=" + relX + ",relZ=" + relZ;
+		return "materials=" + model + ",relX=" + relX + ",relZ=" + relZ;
 	}
 	
 	public ColumnModel getModel() {
@@ -79,12 +69,6 @@ public class WallCornerConfig extends Component {
 	}
 	public void setModel(ColumnModel model) {
 		this.model = model;
-	}
-	public int getSize() {
-		return size;
-	}
-	public void setSize(int size) {
-		this.size = size;
 	}
 	public int getRelX() {
 		return relX;

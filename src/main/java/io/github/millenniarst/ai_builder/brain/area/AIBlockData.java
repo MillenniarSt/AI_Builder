@@ -25,9 +25,10 @@ import io.github.millenniarst.ai_builder.config.UnderGroupStyle;
 public class AIBlockData {
 
 	private String material;
+
 	private BlockType type;
 	private String group;
-	private UnderGroupStyle underGroup;
+	//private UnderGroupStyle underGroup;
 	
 	private HashMap<String, String> properties;
 	

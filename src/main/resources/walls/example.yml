@@ -1,0 +1,11 @@
+repeat: 'example\repeat'
+bottom: 'example\bottom'
+up: 'example\up'
+corner: 'example\corner'
+window:
+  example: 1
+preferences:
+  min-floor: 1
+  max-floor: 4
+  min-height: 4
+  max-height: 10

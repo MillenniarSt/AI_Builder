@@ -1,0 +1,8 @@
+name: 'house'
+rooms:
+  room: 1
+walls:
+  wall: 1
+wallsize: 1
+min-floor-high: 4
+max-floor-high: 5

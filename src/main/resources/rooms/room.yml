@@ -1,0 +1,7 @@
+preferences:
+  minX: 4
+  maxX: 8
+  minZ: 4
+  maxZ: 6
+floors:
+  floor: 1

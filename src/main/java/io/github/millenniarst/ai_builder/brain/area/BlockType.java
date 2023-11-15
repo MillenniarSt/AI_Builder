@@ -19,7 +19,7 @@ public enum BlockType {
 	
 	private String id;
 	
-	private BlockType(String id) {
+	BlockType(String id) {
 		this.id = id;
 	}
 	

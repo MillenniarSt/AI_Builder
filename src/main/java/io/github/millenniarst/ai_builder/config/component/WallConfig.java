@@ -51,7 +51,7 @@ public class WallConfig extends Component {
 		super.load(path);
 		FileConfiguration file = YamlConfiguration.loadConfiguration(new File(CONFIG + "\\" + path + ".yml"));
 		
-		String modelPath = file.getString("bottom", null);
+		String modelPath = getDirectoryPath() + file.getString("bottom", null);
 		if(modelPath != null)
 			if(!this.model.load(modelPath)) {
 				AI_Builder.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load wall bottom model " + modelPath);
@@ -61,7 +61,7 @@ public class WallConfig extends Component {
 		else
 			this.model = new Model();
 			
-		String cornerPath = file.getString("corner", null);
+		String cornerPath = getDirectoryPath() + file.getString("corner", null);
 		if(cornerPath != null)
 			if(!this.corner.load(cornerPath)) {
 				AI_Builder.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load wall corner " + cornerPath);
@@ -76,7 +76,7 @@ public class WallConfig extends Component {
 		if(!windows.isEmpty() && windows != null) {
 			for(String key : windows) {
 				Window wind = new Window(key);
-				if(!wind.load(key)) {
+				if(!wind.load(getDirectoryPath() + key)) {
 					AI_Builder.getConsole().sendMessage(ChatColor.YELLOW + "Fail to load window " + key);
 					this.setState(STATE_DISABLE);
 					return false;
@@ -101,9 +101,6 @@ public class WallConfig extends Component {
 	
 	public WallCornerConfig getCorner() {
 		return corner;
-	}
-	public void setCorner(WallCornerConfig corner) {
-		this.corner = corner;
 	}
 	public int getMinFloor() {
 		return minFloor;

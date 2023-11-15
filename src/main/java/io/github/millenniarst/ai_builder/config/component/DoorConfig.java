@@ -39,7 +39,7 @@ public class DoorConfig extends Component {
 		
 		distance = getInt(file, "distance", 1);
 		weigh = getInt(file, "weigh", 1);
-		String modelPath = file.getString("model", null);
+		String modelPath = getDirectoryPath() + file.getString("model", null);
 		if(modelPath != null) {
 			if(!this.model.load(modelPath)) {
 				AI_Builder.getConsole().sendMessage(ChatColor.RED + "Fail to load door model " + modelPath);

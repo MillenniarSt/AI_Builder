@@ -1,0 +1,26 @@
+0:
+  0:
+    0:
+      material: 'glass_pane'
+      properties:
+        east: true
+        west: true
+  1:
+    0:
+     material: 'glass_pane'
+     properties:
+       east: true
+       west: true
+    1:
+      type: 'fence_gate'
+      style: 'window'
+      properties:
+        facing: 'south'
+        open: true
+  2:
+    1:
+      type: 'fence_gate'
+      style: 'window'
+      properties:
+        facing: 'north'
+        half: 'bottom'

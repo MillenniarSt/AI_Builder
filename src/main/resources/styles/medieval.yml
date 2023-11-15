@@ -1,0 +1,165 @@
+name: 'medieval'
+color:
+  brown: 1
+groups:
+  wall-wood:
+    spruce:
+      spruce: 1
+    oak:
+      oak: 1
+  wall:
+    stone:
+      stone: 1
+      cobblestone: 1
+      andesite: 1
+    stone-bricks:
+      stone_bricks: 2
+      andesite: 1
+      stone: 1
+      polished_andesite: 2
+    andesite:
+      andesite: 1
+      polished_andesite: 1
+      stone: 1
+    cobblestone:
+      stone_bricks: 1
+      andesite: 1
+      stone: 1
+      cobblestone: 1
+  floor-wood:
+    spruce:
+      spruce: 1
+    oak:
+      oak: 1
+    jungle:
+      jungle: 1
+  floor:
+    stone:
+      stone: 1
+      cobblestone: 1
+      andesite: 1
+    stone-bricks:
+      stone_bricks: 2
+      andesite: 1
+      stone: 1
+      polished_andesite: 2
+    andesite:
+      andesite: 1
+      polished_andesite: 1
+      stone: 1
+    cobblestone:
+      stone_bricks: 1
+      andesite: 1
+      stone: 1
+      cobblestone: 1
+  window-wood:
+    spruce:
+      spruce: 1
+    oak:
+      oak: 1
+    jungle:
+      jungle: 1
+  window:
+    stone:
+      stone: 1
+      cobblestone: 1
+      andesite: 1
+    stone-bricks:
+      stone_bricks: 2
+      andesite: 1
+      stone: 1
+      polished_andesite: 2
+    andesite:
+      andesite: 1
+      polished_andesite: 1
+      stone: 1
+    cobblestone:
+      stone_bricks: 1
+      andesite: 1
+      stone: 1
+      cobblestone: 1
+  door-wood:
+    spruce:
+      spruce: 1
+    dark-oak:
+      dark_oak: 1
+  door:
+    stone:
+      stone: 1
+      cobblestone: 1
+      andesite: 1
+    stone-bricks:
+      stone_bricks: 2
+      andesite: 1
+      stone: 1
+      polished_andesite: 2
+    andesite:
+      andesite: 1
+      polished_andesite: 1
+      stone: 1
+    cobblestone:
+      stone_bricks: 1
+      andesite: 1
+      stone: 1
+      cobblestone: 1
+  roof-wood:
+    spruce:
+      spruce: 1
+    jungle:
+      jungle: 1
+    dark-oak:
+      dark_oak: 1
+  roof-wood-base:
+    spruce:
+      spruce: 1
+    jungle:
+      jungle: 1
+  roof-wood-overlay:
+    dark-oak:
+      dark_oak: 1
+  roof:
+    andesite:
+      andesite: 1
+      stone: 1
+      polished_andesite: 1
+    stone-bricks:
+      stone_bricks: 1
+      polished_andesite: 1
+    cobblestone:
+      stone: 2
+      cobblestone: 3
+      andesite: 2
+  roof-base:
+    andesite:
+      andesite: 1
+      stone: 1
+      polished_andesite: 1
+    stone-bricks:
+      stone_bricks: 1
+      polished_andesite: 1
+    cobblestone:
+      stone: 2
+      cobblestone: 3
+      andesite: 2
+  roof-overlay:
+    deepslate:
+      polished_deepslate: 1
+    deepslate-bricks:
+      deepslate_bricks: 3
+      deepslate_tiles: 2
+    all-deepslate:
+      polished_deepslate: 1
+      deepslate_bricks: 1
+      deepslate_tiles: 1
+  leaves:
+    oak:
+      oak: 1
+      jungle: 1
+      dark_oak: 1
+    spruce:
+      spruce: 1
+      birch: 1
+    flower:
+      azalea: 1
+      flowering_azalea: 2
+      jungle: 1
