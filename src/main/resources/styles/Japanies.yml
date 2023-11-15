@@ -72,8 +72,36 @@ groups:
     mangrove:
       mangrove: 2
       mangrove_fence: 2
-      mangrove trapdor: 1
+      mangrove_trapdor: 1
     stone:
       tuff: 1
       stone: 3
       birch_trapdor: 1
+  floor-wood:
+    classic:
+      stripped_spruce: 1
+      dark_oak: 1
+      stripped_oak: 1
+    colorful:
+      stripped_cherry: 1 
+      stripped_birch: 1
+    nether:
+      warped_stem: 3
+      stripped_spruce: 1
+  floor:
+    cherries:
+      stripped_cherry: 1
+      cherry_leaves: 2
+      cherry_planks: 1
+    imperial:
+      stone_brick: 3
+      cracked_stone_brick: 1
+      chiseled_stone_brick: 1
+      spruce_plank: 2
+    acquaic:
+       prismarine_bricks: 1
+       prismarine: 3
+       dark_prismarine_stair:
+       cherry_leaves: 2
+      
+    
