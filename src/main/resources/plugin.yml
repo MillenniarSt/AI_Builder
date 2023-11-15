@@ -1,4 +1,0 @@
-name: AI-Builder
-version: '${project.version}'
-main: io.github.millenniarst.ai_builder.AI_Builder
-api-version: '1.20'
