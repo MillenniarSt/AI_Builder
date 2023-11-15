@@ -1,0 +1,12 @@
+name: 'house'
+rooms:
+  room: 1
+wall:
+  wall: 1
+defaultFloorHigh: 5
+floors: 3
+undergroundFloors: 0
+rooms: 4
+wallsize: 1
+wallAnchor: 3
+stairsWeigh: 4

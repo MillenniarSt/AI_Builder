@@ -1,0 +1,11 @@
+corner:"floor\corner"
+side:"floor\side"
+repeat:"floor\repeat"
+center:
+  - "floor\center00"
+  - "floor\center10"
+  - "floor\center01"
+  - "floor\center11"
+preferencies:
+  ceiling:false
+  inside:true

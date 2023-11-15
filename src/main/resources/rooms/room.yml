@@ -1,0 +1,5 @@
+preferencies:
+  minX: 4
+  maxX: 8
+  minZ: 4
+  maxZ: 6
