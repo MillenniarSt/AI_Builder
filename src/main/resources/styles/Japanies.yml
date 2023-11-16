@@ -105,9 +105,31 @@ groups:
       cherry_leaves: 2
     dark:
       deepstlate_brick: 2
-      chiseled_deepslate_brick:1
+      chiseled_deepslate_brick: 1
       stripped_spruce: 1
-    
+  window-wood:
+    big:
+      stripped_oak: 2
+      stripped_spruce: 1
+      mangrove: 2
+    small:
+      oak: 1
+      spruce: 2
+      stripped_jungle: 2
+  window:
+    imperial:
+      stone_brick: 4
+      cracked_stone_brick: 2
+      chiseled_stone_brick: 1
+      jungle_leaves: 2
+    luxory:
+      smooth_quarz_block: 3
+      stripped_mangrove_wood: 1
+    classic:
+      stripped_warped_stem: 3
+      blackstone_brick: 2
+      quarz_block: 2
+      
      
       
     
