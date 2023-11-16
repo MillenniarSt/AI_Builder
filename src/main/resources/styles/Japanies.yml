@@ -129,7 +129,30 @@ groups:
       stripped_warped_stem: 3
       blackstone_brick: 2
       quarz_block: 2
-      
+  door-wood:
+    cherry:
+      stripped_cherry: 2
+      warped_stem: 2
+    modern:
+      spruce: 2
+      jungle: 2
+      stripped_spruce: 2
+  door:
+    stone:
+      cobblestone: 2
+      stone_brick: 4
+      mossy_stone_brick: 1
+    sandstone:
+      sandstone: 2
+      chiseled_sandstone: 1
+      smooth_sandstone: 1
+    nether:
+      warped_stem: 2
+      red_nether_bricks: 1
+      mud_brick: 4
+   
+    
+       
      
       
     
