@@ -92,7 +92,7 @@ groups:
       stripped_mangrove_wood: 3
       deepslate_brick_wall: 1
       polished_andesite: 1
-.     polished_granite: 1
+      polished_granite: 1
     natural:
       oak_log: 3
       stripped_oak_wood: 3
