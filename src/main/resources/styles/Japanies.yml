@@ -99,9 +99,15 @@ groups:
       chiseled_stone_brick: 1
       spruce_plank: 2
     acquaic:
-       prismarine_bricks: 1
-       prismarine: 3
-       dark_prismarine_stair:
-       cherry_leaves: 2
+      prismarine_bricks: 1
+      prismarine: 3
+      dark_prismarine_stair: 1
+      cherry_leaves: 2
+    dark:
+      deepstlate_brick: 2
+      chiseled_deepslate_brick:1
+      stripped_spruce: 1
+    
+     
       
     
